@@ -11,7 +11,7 @@ const port = 4000;
 // db setup
 const db = require("./db");
 const dbName = "data";
-const collectionName = "movies";
+const collectionName = "projects";
 
 // db init
 db.initialize(dbName, collectionName, function(dbCollection) {
