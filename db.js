@@ -1,6 +1,5 @@
 // mongodb driver
 const MongoClient = require("mongodb").MongoClient;
-
 const dbConnectionUrl = "mongodb+srv://Amit:watertemple89@cluster0-d2htt.mongodb.net/test?retryWrites=true&w=majority";
 
 function initialize(
@@ -9,7 +8,7 @@ function initialize(
     successCallback,
     failureCallback
 ) {
-    MongoClient.connect(dbConnectionUrl, function(err, dbInstance) {
+    MongoClient.connect(dbConnectionUrl, { useUnifiedTopology: true }, function(err, dbInstance) {
         if (err) {
             console.log(`[MongoDB connection] ERROR: ${err}`);
             failureCallback(err); // this should be "caught" by the calling function
