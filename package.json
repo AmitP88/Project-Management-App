@@ -29,12 +29,14 @@
   "dependencies": {
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
-    "concurrently": "^5.1.0",
     "create-react-app": "^3.4.0",
-    "diskdb": "^0.1.17",
     "express": "^4.17.1",
     "http-proxy-middleware": "^1.0.0",
     "mongodb": "^3.5.3",
+    "mongoose": "^5.9.2"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0",
     "nodemon": "^2.0.2"
   }
 }
