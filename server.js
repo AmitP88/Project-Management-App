@@ -6,7 +6,18 @@ const body_parser = require('body-parser');
 // parse JSON (application/json content-type)
 server.use(body_parser.json());
 
-const port = 4000;
+// for production only
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+
+  const path = require('path');
+  app.get('*', (req,res) => {
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  })
+
+}
+
+const port = 5000;
 
 // db setup
 const db = require("./db");

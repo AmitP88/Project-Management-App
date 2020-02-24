@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "client": "npm run start --prefix client",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "start": "node server.js"
   },
   "nodemonConfig": {
     "ignore": [
@@ -24,9 +27,13 @@
   },
   "homepage": "https://github.com/AmitP88/Project-Management-App#readme",
   "dependencies": {
+    "axios": "^0.19.2",
     "body-parser": "^1.19.0",
+    "concurrently": "^5.1.0",
+    "create-react-app": "^3.4.0",
     "diskdb": "^0.1.17",
     "express": "^4.17.1",
+    "http-proxy-middleware": "^1.0.0",
     "mongodb": "^3.5.3",
     "nodemon": "^2.0.2"
   }
