@@ -24,7 +24,7 @@ db.initialize(dbName, collectionName, function(dbCollection) {
   // db CRUD routes
 
   // POST a new item ("Create" method in CRUD)
-  server.post("/items", (request, response) => {
+  server.post("/", (request, response) => {
     const item = request.body;
     dbCollection.insertOne(item, (error, result) => { // callback of insertOne
       if (error) throw error;
@@ -37,7 +37,7 @@ db.initialize(dbName, collectionName, function(dbCollection) {
   });
 
   // GET a single item based on it's ID ("Read one" method in CRUD)
-  server.get("/items/:id", (request, response) => {
+  server.get("/:id", (request, response) => {
     const itemId = request.params.id;
     dbCollection.findOne({ id: itemId }, (error, result) => {
       if (error) throw error;
@@ -47,7 +47,7 @@ db.initialize(dbName, collectionName, function(dbCollection) {
   });
 
   // Get all items ("Read all" method in CRUD)
-  server.get("/items", (request, response) => {
+  server.get("/", (request, response) => {
     // return updated list
     dbCollection.find().toArray((error, result) => {
         if (error) throw error;
@@ -56,7 +56,7 @@ db.initialize(dbName, collectionName, function(dbCollection) {
   });
 
   // Update an item using PUT ("Update" method in CRUD)
-  server.put("/items/:id", (request, response) => {
+  server.put("/:id", (request, response) => {
     const itemId = request.params.id;
     const item = request.body;
     console.log("Editing item: ", itemId, " to be ", item);
@@ -72,7 +72,7 @@ db.initialize(dbName, collectionName, function(dbCollection) {
   });
 
   // Delete an item using ID ("Delete" method in CRUD)
-  server.delete("/items/:id", (request, response) => {
+  server.delete("/:id", (request, response) => {
     const itemId = request.params.id;
     console.log("Delete item with id: ", itemId);
 
