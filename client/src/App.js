@@ -23,7 +23,7 @@ function App() {
   const renderProject = project => {
     return (
       <li key={project.id} className="list__item project">
-        <h3>{project.project}</h3>
+        <h3>{project.name}</h3>
       </li>
     );
   };
