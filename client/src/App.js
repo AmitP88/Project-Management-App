@@ -4,8 +4,8 @@ import './App.css';
 
 import projectService from './services/projectService';
 
-function App() {
-
+const App = () => {
+  // Hook for getting projects
   const [projects, setprojects] = useState(null);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ function App() {
 
   const renderProject = project => {
     return (
-      <li key={project.id} className="list__item project">
+      <li key={project._id} className="list__item project">
         <h3>{project.name}</h3>
       </li>
     );
@@ -35,6 +35,9 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        {/* Form for adding a new project */}
+
+        {/* Display all projects */}
         <ul>
           {(projects && projects.length > 0) ? (
             projects.map(project => renderProject(project))

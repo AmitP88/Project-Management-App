@@ -36,8 +36,8 @@ db.initialize(dbName, collectionName, function(dbCollection) {
 
   // POST a new project ("Create" method in CRUD)
   server.post("/api/project", (request, response) => {
-    const item = request.body;
-    dbCollection.insertOne(item, (error, result) => { // callback of insertOne
+    const project = request.body;
+    dbCollection.insertOne(project, (error, result) => { // callback of insertOne
       if (error) throw error;
       // return updated list
       dbCollection.find().toArray((_error, _result) => { // callback of find
@@ -48,9 +48,9 @@ db.initialize(dbName, collectionName, function(dbCollection) {
   });
 
   // GET a single project based on it's ID ("Read one" method in CRUD)
-  server.get("/api/project/:id", (request, response) => {
-    const itemId = request.params.id;
-    dbCollection.findOne({ id: itemId }, (error, result) => {
+  server.get("/api/project/:_id", (request, response) => {
+    const projectId = request.params._id;
+    dbCollection.findOne({ _id: projectId }, (error, result) => {
       if (error) throw error;
       // return item
       response.json(result);
@@ -67,12 +67,12 @@ db.initialize(dbName, collectionName, function(dbCollection) {
   });
 
   // Update a project using PUT ("Update" method in CRUD)
-  server.put("/api/projects/:id", (request, response) => {
-    const itemId = request.params.id;
-    const item = request.body;
-    console.log("Editing item: ", itemId, " to be ", item);
+  server.put("/api/projects/:_id", (request, response) => {
+    const projectId = request.params._id;
+    const project = request.body;
+    console.log("Editing project: ", projectId, " to be ", project);
 
-    dbCollection.updateOne({ id: itemId }, { $set: item }, (error, result) => {
+    dbCollection.updateOne({ _id: projectId }, { $set: project }, (error, result) => {
       if (error) throw error;
       // send back entire updated list, to make sure frontend data is up-to-date
       dbCollection.find().toArray(function(_error, _result) {
@@ -83,11 +83,11 @@ db.initialize(dbName, collectionName, function(dbCollection) {
   });
 
   // Delete a project using ID ("Delete" method in CRUD)
-  server.delete("/api/project/:id", (request, response) => {
-    const itemId = request.params.id;
-    console.log("Delete item with id: ", itemId);
+  server.delete("/api/project/:_id", (request, response) => {
+    const projectId = request.params._id;
+    console.log("Delete project with _id: ", projectId);
 
-    dbCollection.deleteOne({ id: itemId }, function(error, result) {
+    dbCollection.deleteOne({ _id: projectId }, function(error, result) {
         if (error) throw error;
         // send back entire updated list after successful request
         dbCollection.find().toArray(function(_error, _result) {
