@@ -34,8 +34,8 @@ db.initialize(dbName, collectionName, function(dbCollection) {
 
   // db CRUD routes
 
-  // POST a new item ("Create" method in CRUD)
-  server.post("/api", (request, response) => {
+  // POST a new project ("Create" method in CRUD)
+  server.post("/api/project", (request, response) => {
     const item = request.body;
     dbCollection.insertOne(item, (error, result) => { // callback of insertOne
       if (error) throw error;
@@ -47,8 +47,8 @@ db.initialize(dbName, collectionName, function(dbCollection) {
     });
   });
 
-  // GET a single item based on it's ID ("Read one" method in CRUD)
-  server.get("/api/:id", (request, response) => {
+  // GET a single project based on it's ID ("Read one" method in CRUD)
+  server.get("/api/project/:id", (request, response) => {
     const itemId = request.params.id;
     dbCollection.findOne({ id: itemId }, (error, result) => {
       if (error) throw error;
@@ -57,8 +57,8 @@ db.initialize(dbName, collectionName, function(dbCollection) {
     });
   });
 
-  // Get all items ("Read all" method in CRUD)
-  server.get("/api", (request, response) => {
+  // Get all projects ("Read all" method in CRUD)
+  server.get("/api/project", (request, response) => {
     // return updated list
     dbCollection.find().toArray((error, result) => {
         if (error) throw error;
@@ -66,8 +66,8 @@ db.initialize(dbName, collectionName, function(dbCollection) {
     });
   });
 
-  // Update an item using PUT ("Update" method in CRUD)
-  server.put("/api/:id", (request, response) => {
+  // Update a project using PUT ("Update" method in CRUD)
+  server.put("/api/projects/:id", (request, response) => {
     const itemId = request.params.id;
     const item = request.body;
     console.log("Editing item: ", itemId, " to be ", item);
@@ -82,8 +82,8 @@ db.initialize(dbName, collectionName, function(dbCollection) {
     });
   });
 
-  // Delete an item using ID ("Delete" method in CRUD)
-  server.delete("/api/:id", (request, response) => {
+  // Delete a project using ID ("Delete" method in CRUD)
+  server.delete("/api/project/:id", (request, response) => {
     const itemId = request.params.id;
     console.log("Delete item with id: ", itemId);
 
