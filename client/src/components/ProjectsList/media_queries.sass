@@ -4,8 +4,15 @@
     display: block;
     .projectTile
       margin: 0 auto;
-      margin-bottom: 10%;
+      margin-bottom: 20px;
 
+@media screen and (min-width: 600px) and (max-width: 1023px)
+  .list_container
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .projectTile
+      margin: 20px;
 
 // Tablet view
 @media screen and (min-width: 768px)
@@ -13,11 +20,9 @@
     display: flex;
     justify-content: center;
     .projectTile
-      margin: 10px;
+      margin: 20px;
 
 // Laptop/Desktop view
 @media screen and (min-width: 1024px)
   .list_container
     display: flex;
-    .projectTile
-      margin: 25px;
