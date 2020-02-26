@@ -21,10 +21,23 @@ const ProjectsList = () => {
   }
 
   const renderProject = project => {
+    let id = project._id;
+    let name = project.name;
+    let deadline = project.deadline;
+    let tasks_completed = project.tasks_completed;
+    let total_tasks = project.total_tasks;
+
     return (
-      <div key={project._id} className="projectTile">
-        <h3 className="name">{project.name}</h3>
-        <h4 className="deadline">{project.deadline}</h4>
+      <div key={id} className="projectTile">
+        <h3 className="name">{name}</h3>
+        <h4 className="deadline">{deadline}</h4>
+        <div className="progress">
+          <div className="progress_dial">{((tasks_completed/total_tasks)*100).toFixed(0) + '%'}</div>
+          <div className="tasks_completed">
+            <h4>Tasks Completed:</h4>
+            <div className="ratio">{tasks_completed + '/' + total_tasks}</div>
+          </div>
+        </div>
       </div>
     );
   };
