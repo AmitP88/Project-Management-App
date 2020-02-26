@@ -49,6 +49,8 @@ const Projects = () => {
 
   return (
     <div className="Projects">
+      <h1 className="pageTitle">Projects</h1>
+      <div className="searchBar">"(Search bar goes here)"</div>
       {/* Display all projects */}
       <div className="list">
         {(projects && projects.length > 0) ? 

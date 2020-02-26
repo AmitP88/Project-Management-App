@@ -1,91 +1,103 @@
-.projectTile
-  width: 200px;
-  height: 200px;
-  padding: 25px;
+.Projects
   border: 0.5px solid darkgray;
-  .name, .deadline, .progress
+  .pageTitle
     text-align: center;
-    border: 0.5px solid skyblue;
-    margin: 5px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  .name
-    font-size: x-large;
-    color: deepskyblue;
+  .searchBar
+    background-color: aquamarine;
     height: 50px;
-  .deadline
-    color: darkred;
-    height: 30px;
-  .progress
     display: flex;
-    justify-content: space-between;
-    height: 65px;
-    .progress_dial
-      display: flex;
-      align-items: center;
-      padding-left: 15%;
-    .tasks_completed
-      display: block;
-      border: 0.5px solid green;
-      width: 50%;
-      height: 100%;
-      h4
-        font-size: 13px;
-        margin: 0;
-        border-bottom: 0.5px solid darkgray;
-        padding-bottom: 2px;
-      .ratio
-        margin-top: 10px;
-  .buttons_container
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-    button
-      width: 45%;
-    .edit
-      box-shadow: inset 0px 0.5px 0px 0px #ffffff;
-      background: linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
-      background-color: #f9f9f9;
-      border-radius: 6px;
-      border: 0.5px solid #dcdcdc;
-      display: inline-block;
-      cursor: pointer;
-      color: #666666;
-      font-family: Arial;
-      font-size: 13px;
-      font-weight: bold;
-      padding: 6px 24px;
-      text-decoration: none;
-      text-shadow: 0px 0.5px 0px #ffffff;
-      outline: none;  
-    .edit:hover
-      background: linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
-      background-color: #e9e9e9;
-    .edit:active
-      position: relative;
-      top: 1px;
-      outline: none;
-    .delete
-      box-shadow: inset 0px 0.5px 0px 0px #f5978e;
-      background: linear-gradient(to bottom, #f24537 5%, #c62d1f 100%);
-      background-color: #f24537;
-      border-radius: 6px;
-      border: 0.5px solid #d02718;
-      display: inline-block;
-      cursor: pointer;
-      color: #ffffff;
-      font-family: Arial;
-      font-size: 13px;
-      font-weight: bold;
-      padding: 6px 24px;
-      text-decoration: none;
-      text-shadow: 0px 0.5px 0px #810e05;
-      outline: none;
-    .delete:hover
-      background: linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
-      background-color: #c62d1f;
-    .delete:active
-      position: relative;
-      top: 1px;
-      outline: none;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+  .list
+    .projectTile
+      width: 200px;
+      height: 200px;
+      padding: 25px;
+      border: 0.5px solid darkgray;
+      .name, .deadline, .progress
+        text-align: center;
+        border: 0.5px solid skyblue;
+        margin: 5px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      .name
+        font-size: x-large;
+        color: deepskyblue;
+        height: 50px;
+      .deadline
+        color: darkred;
+        height: 30px;
+      .progress
+        display: flex;
+        justify-content: space-between;
+        height: 65px;
+        .progress_dial
+          display: flex;
+          align-items: center;
+          padding-left: 15%;
+        .tasks_completed
+          display: block;
+          border: 0.5px solid green;
+          width: 50%;
+          height: 100%;
+          h4
+            font-size: 13px;
+            margin: 0;
+            border-bottom: 0.5px solid darkgray;
+            padding-bottom: 2px;
+          .ratio
+            margin-top: 10px;
+      .buttons_container
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+        button
+          width: 45%;
+        .edit
+          box-shadow: inset 0px 0.5px 0px 0px #ffffff;
+          background: linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
+          background-color: #f9f9f9;
+          border-radius: 6px;
+          border: 0.5px solid #dcdcdc;
+          display: inline-block;
+          cursor: pointer;
+          color: #666666;
+          font-family: Arial;
+          font-size: 13px;
+          font-weight: bold;
+          padding: 6px 24px;
+          text-decoration: none;
+          text-shadow: 0px 0.5px 0px #ffffff;
+          outline: none;  
+        .edit:hover
+          background: linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
+          background-color: #e9e9e9;
+        .edit:active
+          position: relative;
+          top: 1px;
+          outline: none;
+        .delete
+          box-shadow: inset 0px 0.5px 0px 0px #f5978e;
+          background: linear-gradient(to bottom, #f24537 5%, #c62d1f 100%);
+          background-color: #f24537;
+          border-radius: 6px;
+          border: 0.5px solid #d02718;
+          display: inline-block;
+          cursor: pointer;
+          color: #ffffff;
+          font-family: Arial;
+          font-size: 13px;
+          font-weight: bold;
+          padding: 6px 24px;
+          text-decoration: none;
+          text-shadow: 0px 0.5px 0px #810e05;
+          outline: none;
+        .delete:hover
+          background: linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
+          background-color: #c62d1f;
+        .delete:active
+          position: relative;
+          top: 1px;
+          outline: none;
