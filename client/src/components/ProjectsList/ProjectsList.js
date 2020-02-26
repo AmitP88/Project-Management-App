@@ -21,7 +21,7 @@ const ProjectsList = () => {
 
   const renderProject = project => {
     return (
-      <li key={project._id} className="project_tile">
+      <li key={project._id} className="projectTile">
         <h3>{project.name}</h3>
       </li>
     );
@@ -31,16 +31,10 @@ const ProjectsList = () => {
     <div className="projectsList">
       {/* Display all projects */}
       <ul>
-        {(projects && projects.length > 0) ? (
-            projects.map(project => {
-              return (
-                <li className="projectTile">{renderProject(project)}</li>                 
-              )
-            }
-          )
-        ) : (
-          <p>No projects found</p>
-        )}
+        {(projects && projects.length > 0) ? 
+          (projects.map(project => renderProject(project))) :
+          (<p>No projects found</p>)
+        }
       </ul>
     </div>
   );
