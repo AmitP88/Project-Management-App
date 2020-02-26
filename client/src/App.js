@@ -2,12 +2,12 @@ import React from 'react';
 import './App.sass';
 import './media_queries.sass';
 
-import ProjectsList from './components/ProjectsList/ProjectsList';
+import Projects from './components/Projects/Projects';
 
 const App = () => {
   return (
     <div className="App">
-      <ProjectsList />
+      <Projects />
     </div>
   );
 }

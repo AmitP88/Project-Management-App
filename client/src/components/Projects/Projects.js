@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './ProjectsList.sass';
+import './Projects.sass';
 import './media_queries.sass';
 
 import projectService from '../../services/projectService';
 
-const ProjectsList = () => {
+const Projects = () => {
   // Hook for getting projects
   const [projects, setprojects] = useState(null);
 
@@ -48,9 +48,9 @@ const ProjectsList = () => {
   };
 
   return (
-    <div className="projectsList">
+    <div className="Projects">
       {/* Display all projects */}
-      <div className="list_container">
+      <div className="list">
         {(projects && projects.length > 0) ? 
           (projects.map(project => renderProject(project))) :
           (<p>No projects found</p>)
@@ -60,4 +60,4 @@ const ProjectsList = () => {
   );
 }
 
-export default ProjectsList;
+export default Projects;
