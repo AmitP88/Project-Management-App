@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './ProjectsList.sass';
+import './media_queries.sass';
 
 import projectService from '../../services/projectService';
 
@@ -30,7 +31,7 @@ const ProjectsList = () => {
   return (
     <div className="projectsList">
       {/* Display all projects */}
-      <ul>
+      <ul className="list_container">
         {(projects && projects.length > 0) ? 
           (projects.map(project => renderProject(project))) :
           (<p>No projects found</p>)
