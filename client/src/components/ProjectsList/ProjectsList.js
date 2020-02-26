@@ -23,7 +23,8 @@ const ProjectsList = () => {
   const renderProject = project => {
     return (
       <div key={project._id} className="projectTile">
-        <h3>{project.name}</h3>
+        <h3 className="name">{project.name}</h3>
+        <h4 className="deadline">{project.deadline}</h4>
       </div>
     );
   };
