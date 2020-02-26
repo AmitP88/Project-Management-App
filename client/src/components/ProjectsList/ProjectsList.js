@@ -38,6 +38,10 @@ const ProjectsList = () => {
             <div className="ratio">{tasks_completed + '/' + total_tasks}</div>
           </div>
         </div>
+        <div className="buttons_container">
+          <button>Edit</button>
+          <button>Delete</button>
+        </div>
       </div>
     );
   };
