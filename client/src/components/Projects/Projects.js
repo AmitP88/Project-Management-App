@@ -56,7 +56,7 @@ const Projects = () => {
                         <CircularProgressbar
                           value={value}
                           text={`${roundedValue}%`}
-                          styles={buildStyles({ pathTransition: "none", pathColor: `${roundedValue === 100 ? '#8F1' : '#3e98c7'}`, textColor: `${roundedValue === 100 ? '#8F0' : '#3e98c7'}` })}
+                          styles={buildStyles({ pathTransition: "none", pathColor: `${roundedValue === 100 ? '#4E9' : '#3e98c7'}`, textColor: `${roundedValue === 100 ? '#4E9' : '#3e98c7'}` })}
                         />
                       );
                     }}
