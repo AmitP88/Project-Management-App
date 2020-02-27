@@ -4,8 +4,11 @@ import './media_queries.sass';
 import projectService from '../../services/projectService';
 
 import VisibilitySensor from 'react-visibility-sensor';
-import { CircularProgressbar } from 'react-circular-progressbar';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+
+import { easeQuadInOut } from "d3-ease";
+import AnimatedProgressProvider from "./AnimatedProgressProvider";
 
 const Projects = () => {
   // Hook for getting projects
@@ -41,10 +44,23 @@ const Projects = () => {
               {({ isVisible }) => {
                 const percentage = isVisible ? completed_percentage : 0;
                 return (
-                  <CircularProgressbar
-                    value={percentage}
-                    text={`${percentage}%`}
-                  />
+                  <AnimatedProgressProvider
+                    valueStart={0}
+                    valueEnd={percentage}
+                    duration={1.4}
+                    easingFunction={easeQuadInOut}
+                  >
+                    {(value = percentage) => {
+                      const roundedValue = Math.round(value);
+                      return (
+                        <CircularProgressbar
+                          value={value}
+                          text={`${roundedValue}%`}
+                          styles={buildStyles({ pathTransition: "none" })}
+                        />
+                      );
+                    }}
+                  </AnimatedProgressProvider>
                 );
               }}
             </VisibilitySensor>
