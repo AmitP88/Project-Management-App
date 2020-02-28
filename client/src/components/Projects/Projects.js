@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import './Projects.sass';
 import './media_queries.sass';
 import projectService from '../../services/projectService';
@@ -10,7 +11,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { easeQuadInOut } from "d3-ease";
 import AnimatedProgressProvider from "./AnimatedProgressProvider";
 
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Modal, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Projects = () => {
@@ -90,20 +91,42 @@ const Projects = () => {
     <div className="Projects">
       <h1 className="pageTitle">Projects</h1>
       <div className="searchBar">
-        <Button variant="success" onClick={handleShow}>Add New Project</Button>
+        <Button variant="success"
+          onClick={handleShow}
+        >
+          Add New Project
+        </Button>
       </div>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Add a New Project</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="formProjectName">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter project name"
+                maxLength={10}
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
+          <Button
+            variant="secondary" 
+            onClick={handleClose}
+          >
+            Cancel
           </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={handleClose}
+          >
+            Add Project
           </Button>
         </Modal.Footer>
       </Modal>
