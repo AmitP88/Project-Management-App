@@ -34,14 +34,14 @@
       outline: none;
   .list
     .projectTile
-      width: 200px;
-      height: 200px;
+      width: 300px;
+      height: 300px;
       padding: 25px;
       border: 0.5px solid darkgray;
       .name, .deadline, .progress
         text-align: center;
         border: 0.5px solid skyblue;
-        margin: 5px 0;
+        margin: 10px 0;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -52,16 +52,17 @@
       .deadline
         color: darkred;
         height: 30px;
+        font-size: medium;
       .progress
         display: flex;
         justify-content: space-between;
-        height: 65px;
+        height: 80px;
         .progress_dial
           display: flex;
           align-items: center;
           padding-left: 15%;
-          width: 50px;
-          height: 50px;
+          width: 100px;
+          height: 100px;
           .CircularProgressbar-text
             font-size: 30px !important;
           .CircularProgressbar-path
@@ -74,10 +75,12 @@
           h4
             font-size: 13px;
             margin: 0;
+            margin-top: 10px;
             border-bottom: 0.5px solid darkgray;
             padding-bottom: 2px;
           .ratio
             margin-top: 10px;
+            font-size: large;
       .buttons_container
         display: flex;
         justify-content: space-between;
