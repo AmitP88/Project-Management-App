@@ -79,8 +79,8 @@ const Projects = () => {
           </div>
         </div>
         <div className="buttons_container">
-          <button className="edit">Edit</button>
-          <button className="delete">Delete</button>
+          <Button variant="info" className="button">Edit</Button>
+          <Button variant="danger" className="button">Delete</Button>
         </div>
       </div>
     );
@@ -90,7 +90,7 @@ const Projects = () => {
     <div className="Projects">
       <h1 className="pageTitle">Projects</h1>
       <div className="searchBar">
-        <button className="add_project" onClick={handleShow}>Add New Project</button>
+        <Button variant="success" onClick={handleShow}>Add New Project</Button>
       </div>
 
       <Modal show={show} onHide={handleClose}>
