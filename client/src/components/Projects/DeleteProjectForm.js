@@ -12,9 +12,13 @@ const DeleteProjectForm = () => {
           along with all of the projects' content including:
           descriptions, uploaded files, created tasks and progress %,
           hours logged, and deadlines.
-
-          Please type (project name) to confirm.
         </Form.Label>
+        <Form.Control
+          plaintext 
+          readOnly 
+          defaultValue="Please type (project name) to confirm."
+          style={{textAlign: 'left'}}
+        />
         <Form.Control type="text" />
       </Form.Group>
     </Form>
