@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import './Projects.sass';
 import './media_queries.sass';
 import projectService from '../../services/projectService';
@@ -11,7 +10,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { easeQuadInOut } from "d3-ease";
 import AnimatedProgressProvider from "./AnimatedProgressProvider";
 
-import { Button, Modal, Form } from 'react-bootstrap';
+import { Card, Button, Modal, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Projects = () => {
@@ -44,9 +43,9 @@ const Projects = () => {
     let completed_percentage = ((tasks_completed/total_tasks)*100).toFixed(0);    
 
     return (
-      <div key={id} className="projectTile">
-        <h3 className="name">{name}</h3>
-        <h4 className="deadline">{deadline}</h4>
+      <Card key={id} className="projectTile">
+        <Card.Title>{name}</Card.Title>
+        <Card.Subtitle>{deadline}</Card.Subtitle>
         <div className="progress">
           <div className="progress_dial">
             <VisibilitySensor>
@@ -89,7 +88,7 @@ const Projects = () => {
           <Button variant="info" className="button">Edit</Button>
           <Button variant="danger" className="button">Delete</Button>
         </div>
-      </div>
+      </Card>
     );
   };
 
