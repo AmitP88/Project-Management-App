@@ -112,6 +112,24 @@ const Projects = () => {
                 maxLength={10}
               />
             </Form.Group>
+            <Form.Group controlId="formDeadline">
+              <Form.Label>Deadline</Form.Label>
+              <Form.Control
+                type="date"
+              />
+            </Form.Group>
+            <Form.Group controlId="formTasksCompleted">
+              <Form.Label>Tasks Completed</Form.Label>
+              <Form.Control
+                type="number"
+              />
+            </Form.Group>
+            <Form.Group controlId="formTotalTasks">
+              <Form.Label>Total Tasks</Form.Label>
+              <Form.Control
+                type="number"
+              />
+            </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
