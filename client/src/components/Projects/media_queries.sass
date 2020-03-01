@@ -26,9 +26,13 @@
 @media screen and (min-width: 1024px)
   .list
     display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
 
 @media screen and (min-width: 1200px)
   .Projects
-    height: 90vh;
+    // height: 90vh;
     max-width: 85%;
     margin: 0 auto;
+    .list
+      justify-content: space-between;
