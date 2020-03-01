@@ -14,15 +14,21 @@ import { Card, Button, Modal} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import AddProjectForm from './AddProjectForm';
+import DeleteProjectForm from './DeleteProjectForm';
 
 const Projects = () => {
   // Hook for getting projects
   const [projects, setprojects] = useState(null);
 
   // hooks for add project modal
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [showAddModal, setShowAddModal] = useState(false);
+  const handleCloseAddModal = () => setShowAddModal(false);
+  const handleShowAddModal = () => setShowAddModal(true);
+
+  // hooks for delete project modal
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const handleCloseDeleteModal = () => setShowDeleteModal(false);
+  const handleShowDeleteModal = () => setShowDeleteModal(true);
 
   useEffect(() => {
     if(!projects) {
@@ -88,8 +94,19 @@ const Projects = () => {
             </div>
           </div>
           <div className="buttons_container">
-            <Button variant="info" className="button">Go to Page</Button>
-            <Button variant="danger" className="button">Delete Project</Button>
+            <Button
+              variant="info"
+              className="button"
+            >
+              Go to Page
+            </Button>
+            <Button 
+              variant="danger" 
+              className="button"
+              onClick={handleShowDeleteModal}
+            >
+              Delete Project
+            </Button>
           </div>        
         </Card.Body>
       </Card>
@@ -101,13 +118,14 @@ const Projects = () => {
       <h1 className="pageTitle">Projects</h1>
       <div className="searchBar">
         <Button variant="success"
-          onClick={handleShow}
+          onClick={handleShowAddModal}
         >
           Add New Project
         </Button>
       </div>
 
-      <Modal show={show} onHide={handleClose}>
+      {/* Modal for Adding a new project */}
+      <Modal show={showAddModal} onHide={handleCloseAddModal}>
         <Modal.Header closeButton>
           <Modal.Title>Add a New Project</Modal.Title>
         </Modal.Header>
@@ -117,16 +135,35 @@ const Projects = () => {
         <Modal.Footer>
           <Button
             variant="secondary" 
-            onClick={handleClose}
+            onClick={handleCloseAddModal}
           >
             Cancel
           </Button>
           <Button
             variant="primary"
             type="submit"
-            onClick={handleClose}
+            onClick={handleCloseAddModal}
           >
             Add Project
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Modal for deleting the selected project */}
+      <Modal show={showDeleteModal} onHide={handleCloseDeleteModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Are you sure you want to delete this project?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <DeleteProjectForm />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button 
+            variant="danger"
+            onClick={handleCloseDeleteModal}
+            style={{width: '100%'}}
+          >
+            I understand, permanently Delete This Project
           </Button>
         </Modal.Footer>
       </Modal>
