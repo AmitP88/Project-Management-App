@@ -44,50 +44,52 @@ const Projects = () => {
 
     return (
       <Card key={id} className="projectTile">
-        <Card.Title>{name}</Card.Title>
-        <Card.Subtitle>{deadline}</Card.Subtitle>
-        <div className="progress">
-          <div className="progress_dial">
-            <VisibilitySensor>
-              {({ isVisible }) => {
-                const percentage = isVisible ? completed_percentage : 0;
-                return (
-                  <AnimatedProgressProvider
-                    valueStart={0}
-                    valueEnd={percentage}
-                    duration={1.4}
-                    easingFunction={easeQuadInOut}
-                  >
-                    {(value = percentage) => {
-                      const roundedValue = () => {
-                        if(isNaN(value)) {
-                          return 0;
-                        } else {
-                          return Math.round(value);
-                        }
-                      };
-                      return (
-                        <CircularProgressbar
-                          value={value}
-                          text={isNaN(roundedValue()) ? (0 + '%') : (roundedValue() + '%')}
-                          styles={buildStyles({ pathTransition: "none", pathColor: `${roundedValue() === 100 ? '#4E9' : '#3e98c7'}`, textColor: `${roundedValue() === 100 ? '#4E9' : '#3e98c7'}` })}
-                        />
-                      );
-                    }}
-                  </AnimatedProgressProvider>
-                );
-              }}
-            </VisibilitySensor>
+        <Card.Body>
+          <Card.Title className="name">{name}</Card.Title>
+          <Card.Subtitle className="deadline">{deadline}</Card.Subtitle>
+          <div className="progress">
+            <div className="progress_dial">
+              <VisibilitySensor>
+                {({ isVisible }) => {
+                  const percentage = isVisible ? completed_percentage : 0;
+                  return (
+                    <AnimatedProgressProvider
+                      valueStart={0}
+                      valueEnd={percentage}
+                      duration={1.4}
+                      easingFunction={easeQuadInOut}
+                    >
+                      {(value = percentage) => {
+                        const roundedValue = () => {
+                          if(isNaN(value)) {
+                            return 0;
+                          } else {
+                            return Math.round(value);
+                          }
+                        };
+                        return (
+                          <CircularProgressbar
+                            value={value}
+                            text={isNaN(roundedValue()) ? (0 + '%') : (roundedValue() + '%')}
+                            styles={buildStyles({ pathTransition: "none", pathColor: `${roundedValue() === 100 ? '#4E9' : '#3e98c7'}`, textColor: `${roundedValue() === 100 ? '#4E9' : '#3e98c7'}` })}
+                          />
+                        );
+                      }}
+                    </AnimatedProgressProvider>
+                  );
+                }}
+              </VisibilitySensor>
+            </div>
+            <div className="tasks_completed">
+              <h4>Tasks Completed:</h4>
+              <div className="ratio">{(tasks_completed !== '0' && total_tasks !== '0') ? (tasks_completed + '/' + total_tasks) : 'N / A'}</div>
+            </div>
           </div>
-          <div className="tasks_completed">
-            <h4>Tasks Completed:</h4>
-            <div className="ratio">{(tasks_completed !== '0' && total_tasks !== '0') ? (tasks_completed + '/' + total_tasks) : 'N / A'}</div>
-          </div>
-        </div>
-        <div className="buttons_container">
-          <Button variant="info" className="button">Edit</Button>
-          <Button variant="danger" className="button">Delete</Button>
-        </div>
+          <div className="buttons_container">
+            <Button variant="info" className="button">Edit</Button>
+            <Button variant="danger" className="button">Delete</Button>
+          </div>        
+        </Card.Body>
       </Card>
     );
   };
