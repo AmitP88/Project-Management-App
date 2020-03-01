@@ -3,16 +3,18 @@ import './Projects.sass';
 import './media_queries.sass';
 import projectService from '../../services/projectService';
 
+// Import components & styles for progress dial
 import VisibilitySensor from 'react-visibility-sensor';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-
 import { easeQuadInOut } from "d3-ease";
 import AnimatedProgressProvider from "./AnimatedProgressProvider";
 
+// Import components & styles from React Bootstrap
 import { Card, Button, Modal} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+// Import form components for adding and deleting project cards
 import AddProjectForm from './AddProjectForm';
 import DeleteProjectForm from './DeleteProjectForm';
 
@@ -20,12 +22,12 @@ const Projects = () => {
   // Hook for getting projects
   const [projects, setprojects] = useState(null);
 
-  // hooks for add project modal
+  // Hooks for add project modal
   const [showAddModal, setShowAddModal] = useState(false);
   const handleCloseAddModal = () => setShowAddModal(false);
   const handleShowAddModal = () => setShowAddModal(true);
 
-  // hooks for delete project modal
+  // Hooks for delete project modal
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const handleCloseDeleteModal = () => setShowDeleteModal(false);
   const handleShowDeleteModal = () => setShowDeleteModal(true);
@@ -42,8 +44,8 @@ const Projects = () => {
     setprojects(res);
   }
 
-  // displays a single Project tile
-  const renderProject = (project) => {
+  // Displays a single Project Card
+  const ProjectCard = (project) => {
     let id = project._id;
     let name = project.name;
     let deadline = project.deadline;
@@ -51,6 +53,7 @@ const Projects = () => {
     let total_tasks = project.total_tasks;
     let completed_percentage = ((tasks_completed/total_tasks)*100).toFixed(0);
 
+    // Component for displaying progress dial and ratio
     const Progress = () => {
       return (
         <div className="progress">
@@ -95,7 +98,7 @@ const Projects = () => {
     };
 
     return (
-      <Card key={id} className="projectTile">
+      <Card key={id} className="projectCard">
         <Card.Body>
           <Card.Title className="name">{name}</Card.Title>
           <Card.Subtitle className="deadline">{deadline}</Card.Subtitle>
@@ -120,30 +123,21 @@ const Projects = () => {
     );
   };
 
-  // Display all projects
+  // Component for displaying all projects
   const List = () => {
     return (
       <div className="list">
         {(projects && projects.length > 0) ? 
-          (projects.map(project => renderProject(project))) :
+          (projects.map(project => ProjectCard(project))) :
           (<p>No projects found</p>)
         }
       </div>      
     );
   };
 
-  return (
-    <div className="Projects">
-      <h1 className="pageTitle">Projects</h1>
-      <div className="searchBar">
-        <Button variant="success"
-          onClick={handleShowAddModal}
-        >
-          Add New Project
-        </Button>
-      </div>
-
-      {/* Modal for Adding a new project */}
+  // Modal component for adding new projects
+  const AddProjectModal = () => {
+    return (
       <Modal show={showAddModal} onHide={handleCloseAddModal}>
         <Modal.Header closeButton>
           <Modal.Title>Add a New Project</Modal.Title>
@@ -167,8 +161,12 @@ const Projects = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+    );
+  };
 
-      {/* Modal for deleting the selected project */}
+  // Modal component for deleting an existing project
+  const DeleteProjectModal = () => {
+    return (
       <Modal show={showDeleteModal} onHide={handleCloseDeleteModal}>
         <Modal.Header closeButton>
           <Modal.Title>Are you sure you want to delete this project?</Modal.Title>
@@ -186,6 +184,29 @@ const Projects = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+    );
+  };
+
+  // Component for search bar
+  const SearchBar = () => {
+    return (
+      <div className="searchBar">
+        <Button variant="success"
+          onClick={handleShowAddModal}
+        >
+          Add New Project
+        </Button>
+      </div>
+    );
+  };
+
+
+  return (
+    <div className="Projects">
+      <h1 className="pageTitle">Projects</h1>
+      <SearchBar />
+      <AddProjectModal />
+      <DeleteProjectModal />
       <List />
     </div>
   );
