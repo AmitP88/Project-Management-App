@@ -42,7 +42,8 @@ const Projects = () => {
     setprojects(res);
   }
 
-  const renderProject = project => {
+  // displays a single Project tile
+  const renderProject = (project) => {
     let id = project._id;
     let name = project.name;
     let deadline = project.deadline;
@@ -113,6 +114,18 @@ const Projects = () => {
     );
   };
 
+  // Display all projects
+  const List = () => {
+    return (
+      <div className="list">
+        {(projects && projects.length > 0) ? 
+          (projects.map(project => renderProject(project))) :
+          (<p>No projects found</p>)
+        }
+      </div>      
+    );
+  };
+
   return (
     <div className="Projects">
       <h1 className="pageTitle">Projects</h1>
@@ -167,14 +180,7 @@ const Projects = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-
-      {/* Display all projects */}
-      <div className="list">
-        {(projects && projects.length > 0) ? 
-          (projects.map(project => renderProject(project))) :
-          (<p>No projects found</p>)
-        }
-      </div>
+      <List />
     </div>
   );
 }
