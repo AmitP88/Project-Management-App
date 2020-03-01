@@ -60,12 +60,18 @@ const Projects = () => {
                     easingFunction={easeQuadInOut}
                   >
                     {(value = percentage) => {
-                      const roundedValue = Math.round(value);
+                      const roundedValue = () => {
+                        if(isNaN(value)) {
+                          return 0;
+                        } else {
+                          return Math.round(value);
+                        }
+                      };
                       return (
                         <CircularProgressbar
                           value={value}
-                          text={`${roundedValue}%`}
-                          styles={buildStyles({ pathTransition: "none", pathColor: `${roundedValue === 100 ? '#4E9' : '#3e98c7'}`, textColor: `${roundedValue === 100 ? '#4E9' : '#3e98c7'}` })}
+                          text={isNaN(roundedValue()) ? (0 + '%') : (roundedValue() + '%')}
+                          styles={buildStyles({ pathTransition: "none", pathColor: `${roundedValue() === 100 ? '#4E9' : '#3e98c7'}`, textColor: `${roundedValue() === 100 ? '#4E9' : '#3e98c7'}` })}
                         />
                       );
                     }}
@@ -76,7 +82,7 @@ const Projects = () => {
           </div>
           <div className="tasks_completed">
             <h4>Tasks Completed:</h4>
-            <div className="ratio">{tasks_completed + '/' + total_tasks}</div>
+            <div className="ratio">{(tasks_completed !== '0' && total_tasks !== '0') ? (tasks_completed + '/' + total_tasks) : 'N / A'}</div>
           </div>
         </div>
         <div className="buttons_container">
