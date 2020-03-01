@@ -10,8 +10,10 @@ import 'react-circular-progressbar/dist/styles.css';
 import { easeQuadInOut } from "d3-ease";
 import AnimatedProgressProvider from "./AnimatedProgressProvider";
 
-import { Card, Button, Modal, Form } from 'react-bootstrap';
+import { Card, Button, Modal} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+import AddProjectForm from './AddProjectForm';
 
 const Projects = () => {
   // Hook for getting projects
@@ -110,34 +112,7 @@ const Projects = () => {
           <Modal.Title>Add a New Project</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
-            <Form.Group controlId="formProjectName">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter project name"
-                maxLength={10}
-              />
-            </Form.Group>
-            <Form.Group controlId="formDeadline">
-              <Form.Label>Deadline</Form.Label>
-              <Form.Control
-                type="date"
-              />
-            </Form.Group>
-            <Form.Group controlId="formTasksCompleted">
-              <Form.Label>Tasks Completed</Form.Label>
-              <Form.Control
-                type="number"
-              />
-            </Form.Group>
-            <Form.Group controlId="formTotalTasks">
-              <Form.Label>Total Tasks</Form.Label>
-              <Form.Control
-                type="number"
-              />
-            </Form.Group>
-          </Form>
+          <AddProjectForm />
         </Modal.Body>
         <Modal.Footer>
           <Button
