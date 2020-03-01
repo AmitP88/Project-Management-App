@@ -163,7 +163,7 @@ const Projects = () => {
             onClick={handleCloseDeleteModal}
             style={{width: '100%'}}
           >
-            I understand, permanently Delete This Project
+            I understand, permanently delete this project
           </Button>
         </Modal.Footer>
       </Modal>

@@ -1,5 +1,7 @@
 // Mobile view
 @media screen and (max-width: 767px)
+  .searchBar
+    margin-bottom: 30px;
   .list
     display: block;
     .projectTile
@@ -18,7 +20,7 @@
 @media screen and (min-width: 768px)
   .list
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     .projectTile
       margin: 20px;
 
@@ -31,8 +33,5 @@
 
 @media screen and (min-width: 1200px)
   .Projects
-    // height: 90vh;
     max-width: 85%;
     margin: 0 auto;
-    .list
-      justify-content: space-between;
