@@ -88,8 +88,8 @@ const Projects = () => {
             </div>
           </div>
           <div className="buttons_container">
-            <Button variant="info" className="button">Edit</Button>
-            <Button variant="danger" className="button">Delete</Button>
+            <Button variant="info" className="button">Go to Page</Button>
+            <Button variant="danger" className="button">Delete Project</Button>
           </div>        
         </Card.Body>
       </Card>
