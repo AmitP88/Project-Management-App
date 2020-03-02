@@ -51,8 +51,8 @@ const Projects = () => {
     let id = project._id;
     let name = project.name;
     let deadline = project.deadline;
-    let tasks_completed = project.tasks_completed;
-    let total_tasks = project.total_tasks;
+    let tasks_completed = project.tasks_completed.$numberDecimal;
+    let total_tasks = project.total_tasks.$numberDecimal;
     let completed_percentage = ((tasks_completed/total_tasks)*100).toFixed(0);
 
     // Component for displaying progress dial and ratio
@@ -94,7 +94,7 @@ const Projects = () => {
             <h4>Tasks Completed:</h4>
             <div className="ratio">
               {
-                (tasks_completed !== '0' && total_tasks !== '0') ?
+                (tasks_completed !== 0 && total_tasks !== 0) ?
                 (tasks_completed + '/' + total_tasks) :
                 'N / A'
               }
