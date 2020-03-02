@@ -20,6 +20,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AddProjectForm from './AddProjectForm';
 import DeleteProjectForm from './DeleteProjectForm';
 
+// Import moment component for formatting date from deadline
+import Moment from 'react-moment';
+import 'moment-timezone';
+
 const Projects = () => {
   // Hook for getting projects
   const [projects, setprojects] = useState(null);
@@ -108,7 +112,10 @@ const Projects = () => {
       <Card key={id} className="projectCard">
         <Card.Body>
           <Card.Title className="name">{name}</Card.Title>
-          <Card.Subtitle className="deadline">{deadline}</Card.Subtitle>
+          <Card.Subtitle className="deadline">
+            {'Due: '} 
+            <Moment format="ddd MMMM D, YYYY">{deadline}</Moment>
+          </Card.Subtitle>
           <Progress />
           <div className="buttons_container">
             <Button variant="info" className="button">Go to Page</Button>
