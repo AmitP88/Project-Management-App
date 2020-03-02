@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Projects.sass';
 import './media_queries.sass';
+
+// Import axios get request to get data from DB
 import projectService from '../../services/projectService';
 
 // Import components & styles for progress dial
@@ -69,18 +71,17 @@ const Projects = () => {
                     easingFunction={easeQuadInOut}
                   >
                     {(value = percentage) => {
-                      const roundedValue = () => {
-                        if(isNaN(value)) {
-                          return 0;
-                        } else {
-                          return Math.round(value);
-                        }
-                      };
+                      const roundedValue = isNaN(value) ? 0 : Math.round(value);
                       return (
                         <CircularProgressbar
                           value={value}
-                          text={isNaN(roundedValue()) ? (0 + '%') : (roundedValue() + '%')}
-                          styles={buildStyles({ pathTransition: "none", pathColor: `${roundedValue() === 100 ? '#4E9' : '#3e98c7'}`, textColor: `${roundedValue() === 100 ? '#4E9' : '#3e98c7'}` })}
+                          text={isNaN(roundedValue) ? (0 + '%') : (roundedValue + '%')}
+                          styles={
+                            buildStyles({ 
+                              pathTransition: "none",
+                              pathColor: `${roundedValue === 100 ? '#4E9' : '#3e98c7'}`,
+                              textColor: `${roundedValue === 100 ? '#4E9' : '#3e98c7'}` 
+                          })}
                         />
                       );
                     }}
@@ -91,7 +92,13 @@ const Projects = () => {
           </div>
           <div className="tasks_completed">
             <h4>Tasks Completed:</h4>
-            <div className="ratio">{(tasks_completed !== '0' && total_tasks !== '0') ? (tasks_completed + '/' + total_tasks) : 'N / A'}</div>
+            <div className="ratio">
+              {
+                (tasks_completed !== '0' && total_tasks !== '0') ?
+                (tasks_completed + '/' + total_tasks) :
+                'N / A'
+              }
+            </div>
           </div>
         </div>
       );
@@ -104,19 +111,8 @@ const Projects = () => {
           <Card.Subtitle className="deadline">{deadline}</Card.Subtitle>
           <Progress />
           <div className="buttons_container">
-            <Button
-              variant="info"
-              className="button"
-            >
-              Go to Page
-            </Button>
-            <Button 
-              variant="danger" 
-              className="button"
-              onClick={handleShowDeleteModal}
-            >
-              Delete Project
-            </Button>
+            <Button variant="info" className="button">Go to Page</Button>
+            <Button variant="danger" className="button" onClick={handleShowDeleteModal}>Delete Project</Button>
           </div>        
         </Card.Body>
       </Card>
@@ -127,7 +123,8 @@ const Projects = () => {
   const List = () => {
     return (
       <div className="list">
-        {(projects && projects.length > 0) ? 
+        {
+          (projects && projects.length > 0) ? 
           (projects.map(project => ProjectCard(project))) :
           (<p>No projects found</p>)
         }
@@ -146,19 +143,8 @@ const Projects = () => {
           <AddProjectForm />
         </Modal.Body>
         <Modal.Footer>
-          <Button
-            variant="secondary" 
-            onClick={handleCloseAddModal}
-          >
-            Cancel
-          </Button>
-          <Button
-            variant="primary"
-            type="submit"
-            onClick={handleCloseAddModal}
-          >
-            Add Project
-          </Button>
+          <Button variant="secondary" onClick={handleCloseAddModal}>Cancel</Button>
+          <Button variant="primary" type="submit" onClick={handleCloseAddModal}>Add Project</Button>
         </Modal.Footer>
       </Modal>
     );
@@ -175,11 +161,7 @@ const Projects = () => {
           <DeleteProjectForm />
         </Modal.Body>
         <Modal.Footer>
-          <Button 
-            variant="danger"
-            onClick={handleCloseDeleteModal}
-            style={{width: '100%'}}
-          >
+          <Button variant="danger" onClick={handleCloseDeleteModal} style={{width: '100%'}}>
             I understand, permanently delete this project
           </Button>
         </Modal.Footer>
@@ -191,15 +173,10 @@ const Projects = () => {
   const SearchBar = () => {
     return (
       <div className="searchBar">
-        <Button variant="success"
-          onClick={handleShowAddModal}
-        >
-          Add New Project
-        </Button>
+        <Button variant="success" onClick={handleShowAddModal}>Add New Project</Button>
       </div>
     );
   };
-
 
   return (
     <div className="Projects">
