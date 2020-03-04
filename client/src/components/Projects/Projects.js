@@ -54,16 +54,6 @@ const Projects = () => {
     setprojects(res);
   }
 
-  const handleChangeAddName = (e) => {
-    e.preventDefault();
-    setName(e.target.value);
-  }
-
-  const handleChangeAddDeadline = (e) => {
-    e.preventDefault();
-    setDeadline(e.target.value);
-  }
-
   // Displays a single Project Card
   const ProjectCard = (project) => {
     let id = project._id;
@@ -169,7 +159,7 @@ const Projects = () => {
                 placeholder="Enter project name"
                 maxLength={10}
                 value={name}
-                onChange={handleChangeAddName}
+                onChange={(e) => setName(e.target.value)}
               />
             </Form.Group>
             <Form.Group controlId="formDeadline">
@@ -177,7 +167,7 @@ const Projects = () => {
               <Form.Control
                 type="date"
                 value={deadline}
-                onChange={handleChangeAddDeadline}
+                onChange={(e) => setDeadline(e.target.value)}
               />
             </Form.Group>
           </Form>
@@ -190,7 +180,9 @@ const Projects = () => {
             onClick={() => {
                 console.log('name: ', name);
                 console.log('deadline: ', deadline);
-                return handleCloseAddModal;
+                setName('');
+                setDeadline('');
+                handleCloseAddModal();
               }
             }
           >
