@@ -54,6 +54,16 @@ const Projects = () => {
     setprojects(res);
   }
 
+  const handleChangeAddName = (e) => {
+    e.preventDefault();
+    setName(e.target.value);
+  }
+
+  const handleChangeAddDeadline = (e) => {
+    e.preventDefault();
+    setDeadline(e.target.value);
+  }
+
   // Displays a single Project Card
   const ProjectCard = (project) => {
     let id = project._id;
@@ -144,7 +154,7 @@ const Projects = () => {
   };
 
   // Modal component for adding new projects
-  const AddProjectModal = (props) => {
+  const AddProjectModal = () => {
     return (
       <Modal show={showAddModal} onHide={handleCloseAddModal}>
         <Modal.Header closeButton>
@@ -158,14 +168,16 @@ const Projects = () => {
                 type="text"
                 placeholder="Enter project name"
                 maxLength={10}
-                onChange={(e) => setName(e.target.value)}
+                value={name}
+                onChange={handleChangeAddName}
               />
             </Form.Group>
             <Form.Group controlId="formDeadline">
               <Form.Label>Deadline</Form.Label>
               <Form.Control
                 type="date"
-                onChange={(e) => setDeadline(e.target.value)}
+                value={deadline}
+                onChange={handleChangeAddDeadline}
               />
             </Form.Group>
           </Form>
