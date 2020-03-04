@@ -13,11 +13,11 @@ import { easeQuadInOut } from "d3-ease";
 import AnimatedProgressProvider from "./AnimatedProgressProvider";
 
 // Import components & styles from React Bootstrap
-import { Card, Button, Modal, Form } from 'react-bootstrap';
+import { Card, Button, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import form components for adding and deleting project cards
-// import AddProjectForm from './AddProjectForm';
+import AddProjectForm from './AddProjectForm';
 import DeleteProjectForm from './DeleteProjectForm';
 
 // Import moment component for formatting date from deadline
@@ -33,9 +33,6 @@ const Projects = () => {
   const handleCloseAddModal = () => setShowAddModal(false);
   const handleShowAddModal = () => setShowAddModal(true);
 
-  // Hooks for add project form
-  const [name, setName] = useState('');
-  const [deadline, setDeadline] = useState('');
 
   // Hooks for delete project modal
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -151,26 +148,7 @@ const Projects = () => {
           <Modal.Title>Add a New Project</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
-            <Form.Group controlId="formProjectName">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter project name"
-                maxLength={10}
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group controlId="formDeadline">
-              <Form.Label>Deadline</Form.Label>
-              <Form.Control
-                type="date"
-                value={deadline}
-                onChange={(e) => setDeadline(e.target.value)}
-              />
-            </Form.Group>
-          </Form>
+          <AddProjectForm />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseAddModal}>Cancel</Button>
@@ -178,10 +156,10 @@ const Projects = () => {
             variant="primary"
             type="submit"
             onClick={() => {
-                console.log('name: ', name);
-                console.log('deadline: ', deadline);
-                setName('');
-                setDeadline('');
+                // console.log('name: ', name);
+                // console.log('deadline: ', deadline);
+                // setName('');
+                // setDeadline('');
                 handleCloseAddModal();
               }
             }
