@@ -13,11 +13,11 @@ import { easeQuadInOut } from "d3-ease";
 import AnimatedProgressProvider from "./AnimatedProgressProvider";
 
 // Import components & styles from React Bootstrap
-import { Card, Button, Modal} from 'react-bootstrap';
+import { Card, Button, Modal, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import form components for adding and deleting project cards
-import AddProjectForm from './AddProjectForm';
+// import AddProjectForm from './AddProjectForm';
 import DeleteProjectForm from './DeleteProjectForm';
 
 // Import moment component for formatting date from deadline
@@ -32,6 +32,10 @@ const Projects = () => {
   const [showAddModal, setShowAddModal] = useState(false);
   const handleCloseAddModal = () => setShowAddModal(false);
   const handleShowAddModal = () => setShowAddModal(true);
+
+  // Hooks for add project form
+  const [name, setName] = useState('');
+  const [deadline, setDeadline] = useState('');
 
   // Hooks for delete project modal
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -140,18 +144,46 @@ const Projects = () => {
   };
 
   // Modal component for adding new projects
-  const AddProjectModal = () => {
+  const AddProjectModal = (props) => {
     return (
       <Modal show={showAddModal} onHide={handleCloseAddModal}>
         <Modal.Header closeButton>
           <Modal.Title>Add a New Project</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <AddProjectForm />
+          <Form>
+            <Form.Group controlId="formProjectName">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter project name"
+                maxLength={10}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId="formDeadline">
+              <Form.Label>Deadline</Form.Label>
+              <Form.Control
+                type="date"
+                onChange={(e) => setDeadline(e.target.value)}
+              />
+            </Form.Group>
+          </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseAddModal}>Cancel</Button>
-          <Button variant="primary" type="submit" onClick={handleCloseAddModal}>Add Project</Button>
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={() => {
+                console.log('name: ', name);
+                console.log('deadline: ', deadline);
+                return handleCloseAddModal;
+              }
+            }
+          >
+            Add Project
+          </Button>
         </Modal.Footer>
       </Modal>
     );
