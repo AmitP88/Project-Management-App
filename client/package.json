@@ -18,7 +18,8 @@
     "react-moment": "^0.9.7",
     "react-move": "^6.1.0",
     "react-scripts": "3.4.0",
-    "react-visibility-sensor": "^5.1.1"
+    "react-visibility-sensor": "^5.1.1",
+    "redux": "^4.0.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-redux": "^7.2.0"
   }
 }
