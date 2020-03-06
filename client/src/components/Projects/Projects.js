@@ -17,7 +17,6 @@ import { Card, Button, Modal, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import form components for adding and deleting project cards
-// import AddProjectForm from './AddProjectForm';
 import DeleteProjectForm from './DeleteProjectForm';
 
 // Import moment component for formatting date from deadline
@@ -148,11 +147,9 @@ const Projects = () => {
     // Hooks for add project form
     const [name, setName] = useState('');
     const [deadline, setDeadline] = useState('');
-  
-    // useEffect(() => console.log(name), [name]);
-    // useEffect(() => console.log(deadline), [deadline]);
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+      e.preventDefault();
       console.log(name);
       console.log(deadline);
       handleCloseAddModal();
