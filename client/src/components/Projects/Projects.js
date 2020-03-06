@@ -23,9 +23,12 @@ import DeleteProjectForm from './DeleteProjectForm';
 import Moment from 'react-moment';
 import 'moment-timezone';
 
-// import ADD_PROJECT_SUBMIT from '../../redux/actions/addProjectSubmit';
+// Import connect function from React-Redux
+import { connect } from 'react-redux';
 
-const Projects = () => {
+import ADD_PROJECT_SUBMIT from '../../redux/actions/addProjectSubmit';
+
+const Projects = (props) => {
   // Hook for getting projects
   const [projects, setprojects] = useState(null);
 
@@ -150,8 +153,9 @@ const Projects = () => {
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      console.log(name);
-      console.log(deadline);
+      // console.log(name);
+      // console.log(deadline);
+      props.dispatch({ type: ADD_PROJECT_SUBMIT, payload: { name, deadline } });
       handleCloseAddModal();
     }
 
@@ -229,4 +233,8 @@ const Projects = () => {
   );
 }
 
-export default Projects;
+const mapStateToProps = (state) => ({
+  addProjectForm: state.addProjectForm
+});
+
+export default connect(mapStateToProps)(Projects);
