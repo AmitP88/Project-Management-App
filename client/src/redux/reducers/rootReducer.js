@@ -1,4 +1,5 @@
 import ADD_PROJECT_SUBMIT from '../actions/addProjectSubmit';
+import { compose } from 'redux';
 
 export const initialState = {
   addProjectForm: {

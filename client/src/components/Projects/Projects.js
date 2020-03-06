@@ -24,6 +24,8 @@ import DeleteProjectForm from './DeleteProjectForm';
 import Moment from 'react-moment';
 import 'moment-timezone';
 
+import ADD_PROJECT_SUBMIT from '../../redux/actions/addProjectSubmit';
+
 const Projects = () => {
   // Hook for getting projects
   const [projects, setprojects] = useState(null);
@@ -141,7 +143,7 @@ const Projects = () => {
   };
 
   // Modal component for adding new projects
-  const AddProjectModal = () => {
+  const AddProjectModal = (props) => {
     return (
       <Modal show={showAddModal} onHide={handleCloseAddModal}>
         <Modal.Header closeButton>
@@ -156,10 +158,7 @@ const Projects = () => {
             variant="primary"
             type="submit"
             onClick={() => {
-                // console.log('name: ', name);
-                // console.log('deadline: ', deadline);
-                // setName('');
-                // setDeadline('');
+                // props.dispatch({ type: ADD_PROJECT_SUBMIT, payload: { name, deadline } });
                 handleCloseAddModal();
               }
             }
