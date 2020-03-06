@@ -13,18 +13,18 @@ import { easeQuadInOut } from "d3-ease";
 import AnimatedProgressProvider from "./AnimatedProgressProvider";
 
 // Import components & styles from React Bootstrap
-import { Card, Button, Modal } from 'react-bootstrap';
+import { Card, Button, Modal, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import form components for adding and deleting project cards
-import AddProjectForm from './AddProjectForm';
+// import AddProjectForm from './AddProjectForm';
 import DeleteProjectForm from './DeleteProjectForm';
 
 // Import moment component for formatting date from deadline
 import Moment from 'react-moment';
 import 'moment-timezone';
 
-import ADD_PROJECT_SUBMIT from '../../redux/actions/addProjectSubmit';
+// import ADD_PROJECT_SUBMIT from '../../redux/actions/addProjectSubmit';
 
 const Projects = () => {
   // Hook for getting projects
@@ -49,7 +49,7 @@ const Projects = () => {
 
   const getProjects = async () => {
     let res = await projectService.getAll();
-    console.log(res);
+    // console.log(res);
     setprojects(res);
   }
 
@@ -142,30 +142,53 @@ const Projects = () => {
     );
   };
 
+
   // Modal component for adding new projects
-  const AddProjectModal = (props) => {
+  const AddProjectModal = () => {
+    // Hooks for add project form
+    const [name, setName] = useState('');
+    const [deadline, setDeadline] = useState('');
+  
+    // useEffect(() => console.log(name), [name]);
+    // useEffect(() => console.log(deadline), [deadline]);
+
+    const handleSubmit = () => {
+      console.log(name);
+      console.log(deadline);
+      handleCloseAddModal();
+    }
+
     return (
       <Modal show={showAddModal} onHide={handleCloseAddModal}>
         <Modal.Header closeButton>
           <Modal.Title>Add a New Project</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <AddProjectForm />
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="formProjectName">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter project name"
+                maxLength={10}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId="formDeadline">
+              <Form.Label>Deadline</Form.Label>
+              <Form.Control
+                type="date"
+                value={deadline}
+                onChange={(e) => setDeadline(e.target.value)}
+              />
+            </Form.Group>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleCloseAddModal}>Cancel</Button>
+              <Button variant="primary" type="submit">Add Project</Button>
+            </Modal.Footer>
+          </Form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseAddModal}>Cancel</Button>
-          <Button
-            variant="primary"
-            type="submit"
-            onClick={() => {
-                // props.dispatch({ type: ADD_PROJECT_SUBMIT, payload: { name, deadline } });
-                handleCloseAddModal();
-              }
-            }
-          >
-            Add Project
-          </Button>
-        </Modal.Footer>
       </Modal>
     );
   };
