@@ -24,6 +24,7 @@ import Moment from 'react-moment';
 import 'moment-timezone';
 
 // Import connect function from React-Redux
+import store from '../../redux/store/store';
 import { connect } from 'react-redux';
 
 import ADD_PROJECT_SUBMIT from '../../redux/actions/addProjectSubmit';
@@ -153,9 +154,9 @@ const Projects = (props) => {
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      // console.log(name);
-      // console.log(deadline);
       props.dispatch({ type: ADD_PROJECT_SUBMIT, payload: { name, deadline } });
+      // check to see if store gets updated
+      console.log(store.getState());
       handleCloseAddModal();
     }
 
