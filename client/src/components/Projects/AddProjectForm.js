@@ -19,11 +19,7 @@ const AddProjectForm = () => {
           placeholder="Enter project name"
           maxLength={10}
           value={name}
-          onChange={
-            (e) => {
-              setName(e.target.value);
-            }
-          }
+          onChange={(e) => setName(e.target.value)}
         />
       </Form.Group>
       <Form.Group controlId="formDeadline">
@@ -31,11 +27,7 @@ const AddProjectForm = () => {
         <Form.Control
           type="date"
           value={deadline}
-          onChange={(e) => {
-            setDeadline(e.target.value);
-            console.log(deadline);
-          }
-        }
+          onChange={(e) => setDeadline(e.target.value)}
         />
       </Form.Group>
     </Form>
