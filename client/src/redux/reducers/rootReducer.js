@@ -11,12 +11,12 @@ export const initialState = {
 const rootReducer = (state = initialState, action) => {
   if(action.type === ADD_PROJECT_SUBMIT){
     const { name, deadline } = action.payload;
-    return {
+    return Object.assign({}, state, {
       addProjectForm: {
         name,
         deadline
       }
-    };
+    });
   } else {
     return state;
   }
