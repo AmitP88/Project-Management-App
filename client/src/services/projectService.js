@@ -6,7 +6,7 @@ import axios from 'axios';
 // GET all projects ("Read all" method in CRUD)
 export default {
   getAll: async () => {
-    let res = await axios.get(`/projects`);
+    let res = await axios.get(`/api/projects`);
     return res.data || [];
   }
 }

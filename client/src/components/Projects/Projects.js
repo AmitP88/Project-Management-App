@@ -46,14 +46,13 @@ const Projects = (props) => {
 
   useEffect(() => {
     if(!projects) {
-      console.log(projects);
       getProjects();
     }
   })
 
   const getProjects = async () => {
     let res = await projectService.getAll();
-    // console.log(res);
+    console.log(res);
     setprojects(res);
   }
 
