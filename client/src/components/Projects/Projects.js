@@ -46,6 +46,7 @@ const Projects = (props) => {
 
   useEffect(() => {
     if(!projects) {
+      console.log(projects);
       getProjects();
     }
   })
