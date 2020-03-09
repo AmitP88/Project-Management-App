@@ -12,9 +12,8 @@ export const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   if(action.type === ADD_PROJECT_SUBMIT){
-    const { name, deadline } = action.payload;
     return Object.assign({}, state, {
-      addProjectForm: Object.assign({}, state.addProjectForm, {name, deadline})
+      addProjectForm: Object.assign({}, state.addProjectForm, action.payload)
     });
   } else {
     return state;

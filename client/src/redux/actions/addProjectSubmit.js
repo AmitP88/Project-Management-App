@@ -1,8 +1,10 @@
 export const ADD_PROJECT_SUBMIT = "ADD_PROJECT_SUBMIT";
 
-const addProjectSubmit = () => {
+const addProjectSubmit = (name, deadline) => {
   return {
-    type: ADD_PROJECT_SUBMIT
+    type: ADD_PROJECT_SUBMIT,
+    name,
+    deadline
   }
 };
 
