@@ -175,6 +175,7 @@ const Projects = (props) => {
                 maxLength={10}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                required
               />
             </Form.Group>
             <Form.Group controlId="formDeadline">
@@ -183,6 +184,7 @@ const Projects = (props) => {
                 type="date"
                 value={deadline}
                 onChange={(e) => setDeadline(e.target.value)}
+                required
               />
             </Form.Group>
             <Modal.Footer>
