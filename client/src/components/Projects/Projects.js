@@ -59,6 +59,7 @@ const Projects = (props) => {
   const postNewProject = async () => {
     let res = await projectService.postNew();
     console.log(res);
+    getProjects();
   }
 
   // Displays a single Project Card
