@@ -145,7 +145,7 @@ const Projects = (props) => {
         {
           (projects && projects.length > 0) ? 
           (projects.map(project => ProjectCard(project))) :
-          (<p>No projects found</p>)
+          (<p className="no_projects_found">No projects found. Click on the Add New Project button to create a new project! :)</p>)
         }
       </div>      
     );
