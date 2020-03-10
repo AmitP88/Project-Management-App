@@ -254,6 +254,14 @@ const Projects = (props) => {
             <FontAwesomeIcon icon={faSearch} size="lg" />          
           </button>
         </Form>
+        <span>Sort By</span>
+        <select>
+          <option defaultValue="-- select an option --">-- select an option --</option>
+          <option>Progress % - Low to High</option>
+          <option>Progress % - High to Low</option>
+          <option>Due Date - Closest Date First</option>
+          <option>Due Date - Closest Date Last</option>
+        </select>
         <Button variant="success" onClick={handleShowAddModal}>Add New Project</Button>
       </div>
     );
