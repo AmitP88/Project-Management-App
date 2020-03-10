@@ -145,7 +145,7 @@ const Projects = (props) => {
         {
           (projects && projects.length > 0) ? 
           (projects.map(project => ProjectCard(project))) :
-          (<p className="no_projects_found">No projects found. Click on the Add New Project button to create a new project! :)</p>)
+          (<p className="no_projects_found">No projects found. Click on the <Button variant="success" onClick={handleShowAddModal}>Add New Project</Button> button to create a new project! :)</p>)
         }
       </div>      
     );
@@ -235,7 +235,7 @@ const Projects = (props) => {
   return (
     <div className="Projects">
       <h1 className="pageTitle">Projects</h1>
-      <SearchBar />
+      {(projects && projects.length > 0) ? <SearchBar /> : null}
       <AddProjectModal />
       <DeleteProjectModal />
       <List />
