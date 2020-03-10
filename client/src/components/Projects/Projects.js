@@ -245,12 +245,14 @@ const Projects = (props) => {
   const SearchBar = () => {
     return (
       <div className="searchBar">
-        <Form>
+        <Form className="SearchForm">
           <Form.Control
             type="text"
             placeholder="Search by Project Name..."
           />
-          <FontAwesomeIcon icon={faSearch} />
+          <button className="btn">
+            <FontAwesomeIcon icon={faSearch} size="lg" />          
+          </button>
         </Form>
         <Button variant="success" onClick={handleShowAddModal}>Add New Project</Button>
       </div>
