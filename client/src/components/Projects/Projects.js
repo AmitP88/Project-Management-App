@@ -56,6 +56,11 @@ const Projects = (props) => {
     setprojects(res);
   }
 
+  const postNewProject = async () => {
+    let res = await projectService.postNew();
+    console.log(res);
+  }
+
   // Displays a single Project Card
   const ProjectCard = (project) => {
     let id = project._id;
@@ -157,6 +162,7 @@ const Projects = (props) => {
       props.dispatch({ type: ADD_PROJECT_SUBMIT, payload: { name, deadline } });
       // check to see if store gets updated
       console.log(store.getState());
+      postNewProject();
       handleCloseAddModal();
     }
 
