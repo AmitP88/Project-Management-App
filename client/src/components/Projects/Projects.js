@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './Projects.sass';
 import './media_queries.sass';
 
+// Import Font Awesome for React
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+
 // Import axios get request to get data from DB
 import projectService from '../../services/projectService';
 
@@ -241,6 +245,13 @@ const Projects = (props) => {
   const SearchBar = () => {
     return (
       <div className="searchBar">
+        <Form>
+          <Form.Control
+            type="text"
+            placeholder="Search by Project Name..."
+          />
+          <FontAwesomeIcon icon={faSearch} />
+        </Form>
         <Button variant="success" onClick={handleShowAddModal}>Add New Project</Button>
       </div>
     );
