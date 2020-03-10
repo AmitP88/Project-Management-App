@@ -16,9 +16,6 @@ import AnimatedProgressProvider from "./AnimatedProgressProvider";
 import { Card, Button, Modal, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-// Import form components for adding and deleting project cards
-import DeleteProjectForm from './DeleteProjectForm';
-
 // Import moment component for formatting date from deadline
 import Moment from 'react-moment';
 import 'moment-timezone';
@@ -212,7 +209,24 @@ const Projects = (props) => {
           <Modal.Title>Are you sure you want to delete this project?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <DeleteProjectForm />
+          <Form>
+            <Form.Group controlId="formProjectName">
+              <Form.Label>
+                This action <strong>cannot</strong> be undone.
+                This will permanently delete the (project name) project,
+                along with all of the projects' content including:
+                descriptions, uploaded files, created tasks and progress %,
+                hours logged, and deadlines.
+              </Form.Label>
+              <Form.Control
+                plaintext 
+                readOnly 
+                defaultValue="Please type (project name) to confirm."
+                style={{textAlign: 'left'}}
+              />
+              <Form.Control type="text" />
+            </Form.Group>
+          </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={handleCloseDeleteModal} style={{width: '100%'}}>
