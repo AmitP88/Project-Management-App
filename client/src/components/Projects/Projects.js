@@ -29,6 +29,7 @@ import store from '../../redux/store/store';
 import { connect } from 'react-redux';
 
 import ADD_PROJECT_SUBMIT from '../../redux/actions/addProjectSubmit';
+import SEARCH_PROJECT_SUBMIT from '../../redux/actions/searchProjectSubmit';
 
 const Projects = (props) => {
   // Hook for getting projects
@@ -244,14 +245,23 @@ const Projects = (props) => {
 
   // Component for search bar
   const SearchBar = () => {
+    const [query, setQuery] = useState('');
+
+    const handleQuerySubmit = (e) => {
+      e.preventDefault();
+      props.dispatch({ type: SEARCH_PROJECT_SUBMIT, payload: { query } });
+      console.log(store.getState());
+    }
+
     return (
       <div className="searchBar">
-        <Form className="SearchForm">
+        <Form className="SearchForm" onSubmit={handleQuerySubmit}>
           <Form.Control
             type="text"
             placeholder="Search by Project Name..."
+            onChange={(e) => setQuery(e.target.value)}
           />
-          <button className="btn">
+          <button className="btn" type="submit">
             <FontAwesomeIcon icon={faSearch} size="lg" />          
           </button>
         </Form>
