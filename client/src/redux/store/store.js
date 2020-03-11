@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import rootReducer from '../reducers/rootReducer';
+import addProjectSubmitReducer from '../reducers/addProjectSubmitReducer';
 
 export const initialState = {
   addProjectForm: {
@@ -10,6 +10,6 @@ export const initialState = {
   }
 }
 
-const store = createStore(rootReducer);
+const store = createStore(addProjectSubmitReducer);
 
 export default store;
