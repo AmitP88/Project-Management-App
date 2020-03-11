@@ -3,8 +3,8 @@ import './Projects.sass';
 import './media_queries.sass';
 
 // Import Font Awesome for React
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 // Import axios get request to get data from DB
 import projectService from '../../services/projectService';
@@ -29,11 +29,10 @@ import store from '../../redux/store/store';
 import { connect } from 'react-redux';
 
 import ADD_PROJECT_SUBMIT from '../../redux/actions/addProjectSubmit';
-import SEARCH_PROJECT_SUBMIT from '../../redux/actions/searchProjectSubmit';
 
 const Projects = (props) => {
   // Hook for getting projects
-  const [projects, setprojects] = useState(null);
+  let [projects, setProjects] = useState(null);
 
   // Hooks for add project modal
   const [showAddModal, setShowAddModal] = useState(false);
@@ -54,8 +53,8 @@ const Projects = (props) => {
 
   const getProjects = async () => {
     let res = await projectService.getAll();
-    console.log(res);
-    setprojects(res);
+    // console.log(res);
+    setProjects(res);
   }
 
   const postNewProject = async () => {
@@ -245,25 +244,32 @@ const Projects = (props) => {
 
   // Component for search bar
   const SearchBar = () => {
-    const [query, setQuery] = useState('');
+    const [input_value, setInputValue] = useState('');
 
-    const handleQuerySubmit = (e) => {
-      e.preventDefault();
-      props.dispatch({ type: SEARCH_PROJECT_SUBMIT, payload: { query } });
+    // filter projects in List component as the user types in search criteria
+    const handleInputChange = (e) => {
+      // e.preventDefault();
+      setInputValue(e.target.value);
+      let filtered_projects = projects.filter((project) => {
+        if(input_value === '') {
+          return projects;
+        } else {
+          return input_value.toUpperCase() === project.name;          
+        }
+      });
+      setProjects(filtered_projects);
       console.log(store.getState());
+      console.log(projects);
     }
 
     return (
       <div className="searchBar">
-        <Form className="SearchForm" onSubmit={handleQuerySubmit}>
+        <Form className="SearchForm">
           <Form.Control
             type="text"
             placeholder="Search by Project Name..."
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={handleInputChange}
           />
-          <button className="btn" type="submit">
-            <FontAwesomeIcon icon={faSearch} size="lg" />          
-          </button>
         </Form>
         <span>Sort By</span>
         <select>
