@@ -60,6 +60,7 @@ const Projects = (props) => {
   const postNewProject = async () => {
     let res = await projectService.postNew();
     console.log(res);
+    console.log('store :', store.getState());
     getProjects();
   }
 

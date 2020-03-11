@@ -7,6 +7,9 @@ export const initialState = {
     deadline: '',
     tasks_completed: 0,
     total_tasks: 0
+  },
+  searchProjectForm: {
+    query: ''
   }
 }
 
