@@ -1,4 +1,4 @@
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import addProjectSubmitReducer from '../reducers/addProjectSubmitReducer';
 
 export const initialState = {
@@ -10,6 +10,10 @@ export const initialState = {
   }
 }
 
-const store = createStore(addProjectSubmitReducer);
+const rootReducer = combineReducers({
+  addProjectSubmitReducer
+});
+
+const store = createStore(rootReducer);
 
 export default store;
