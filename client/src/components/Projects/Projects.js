@@ -290,7 +290,8 @@ const Projects = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-  addProjectForm: state.addProjectForm
+  addProjectForm: state.addProjectForm,
+  searchProjectForm: state.searchProjectForm
 });
 
 export default connect(mapStateToProps)(Projects);
