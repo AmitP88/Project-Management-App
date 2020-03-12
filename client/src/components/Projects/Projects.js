@@ -252,8 +252,18 @@ const Projects = (props) => {
     const [input_value, setInputValue] = useState('');
 
     useEffect(() => {
-      console.log(input_value.toUpperCase());
+      console.log(input_value);
+      filterProjects();
     });
+
+    const filterProjects = () => {
+      if(projects !== null) {
+        let filtered = projects.filter((project) => project.name.includes(input_value));
+        if(filtered.length > 0) {
+          console.log('filtered:', filtered);
+        }
+      }
+    }
 
     return (
       <div className="searchBar">
@@ -261,7 +271,7 @@ const Projects = (props) => {
           <Form.Control
             type="text"
             placeholder="Search by Project Name..."
-            onChange={(e) => setInputValue(e.target.value)}
+            onChange={(e) => setInputValue((e.target.value).toUpperCase())}
           />
         </Form>
         <span>Sort By</span>
