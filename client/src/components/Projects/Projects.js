@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './Projects.sass';
 import './media_queries.sass';
 
@@ -250,20 +250,18 @@ const Projects = (props) => {
   // Component for search bar
   const SearchBar = () => {
     const [input_value, setInputValue] = useState('');
+    const firstUpdate = useRef(true);
 
     useEffect(() => {
-      console.log(input_value);
-      filterProjects();
-    });
-
-    const filterProjects = () => {
-      if(projects !== null) {
-        let filtered = projects.filter((project) => project.name.includes(input_value));
-        if(filtered.length > 0) {
-          console.log('filtered:', filtered);
-        }
+      if (firstUpdate.current) {
+        firstUpdate.current = false;
+        return;
       }
-    }
+      console.log(input_value);
+      let filtered = projects.filter((project) => project.name.startsWith(input_value));
+      console.log('filtered:', filtered);
+      // setProjects(filtered);
+    });
 
     return (
       <div className="searchBar">
