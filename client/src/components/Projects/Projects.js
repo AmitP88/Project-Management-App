@@ -186,7 +186,7 @@ const Projects = (props) => {
               <Form.Control
                 type="text"
                 placeholder="Enter project name"
-                maxLength={10}
+                maxLength={20}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
