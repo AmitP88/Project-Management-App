@@ -133,7 +133,7 @@ const Projects = (props) => {
           <Progress />
           <div className="buttons_container">
             <Button variant="info" className="button">Go to Page</Button>
-            <Button variant="danger" className="button" onClick={handleShowDeleteModal}>Delete Project</Button>
+            {/* <Button variant="danger" className="button" onClick={handleShowDeleteModal}>Delete Project</Button> */}
           </div>        
         </Card.Body>
       </Card>
