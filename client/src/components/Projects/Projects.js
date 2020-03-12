@@ -3,8 +3,8 @@ import './Projects.sass';
 import './media_queries.sass';
 
 // Import Font Awesome for React
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 
 // Import axios get request to get data from DB
 import projectService from '../../services/projectService';
@@ -147,9 +147,14 @@ const Projects = (props) => {
         {
           (projects && projects.length > 0) ? 
           (projects.map(project => ProjectCard(project))) :
-          (<p className="no_projects_found">No projects found. Click on the <Button variant="success" onClick={handleShowAddModal}>Add New Project</Button> button to create a new project! :)</p>)
+          (
+            <div className="no_projects_found">
+              <p>No projects found. Click on the plus icon below to create a new project! :) </p>
+              <FontAwesomeIcon className="plus_icon" icon={faPlusCircle} size="4x" onClick={handleShowAddModal} />            
+            </div>
+          )
         }
-      </div>      
+      </div>
     );
   };
 
@@ -246,21 +251,9 @@ const Projects = (props) => {
   const SearchBar = () => {
     const [input_value, setInputValue] = useState('');
 
-    // filter projects in List component as the user types in search criteria
-    const handleInputChange = (e) => {
-      // e.preventDefault();
-      setInputValue(e.target.value);
-      let filtered_projects = projects.filter((project) => {
-        if(input_value === '') {
-          return projects;
-        } else {
-          return input_value.toUpperCase() === project.name;          
-        }
-      });
-      setProjects(filtered_projects);
-      console.log(store.getState());
-      console.log(projects);
-    }
+    useEffect(() => {
+      console.log(input_value.toUpperCase());
+    });
 
     return (
       <div className="searchBar">
@@ -268,7 +261,7 @@ const Projects = (props) => {
           <Form.Control
             type="text"
             placeholder="Search by Project Name..."
-            onChange={handleInputChange}
+            onChange={(e) => setInputValue(e.target.value)}
           />
         </Form>
         <span>Sort By</span>
@@ -287,7 +280,7 @@ const Projects = (props) => {
   return (
     <div className="Projects">
       <h1 className="pageTitle">Projects</h1>
-      {(projects && projects.length > 0) ? <SearchBar /> : null}
+      <SearchBar />
       <AddProjectModal />
       <DeleteProjectModal />
       <List />
