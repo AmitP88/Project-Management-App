@@ -260,7 +260,8 @@ const Projects = (props) => {
       console.log(input_value);
       let filtered = projects.filter((project) => project.name.startsWith(input_value));
       console.log('filtered:', filtered);
-      setProjects(filtered);
+      // Need to prevent SearchBar component from re-rendering when calling setProjects
+      // setProjects(filtered);
     });
 
     return (
