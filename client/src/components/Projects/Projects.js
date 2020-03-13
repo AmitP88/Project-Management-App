@@ -266,13 +266,13 @@ const Projects = (props) => {
 
     return (
       <div className="searchBar">
-        <Form className="SearchForm">
-          <Form.Control
+        <form className="SearchForm">
+          <input
             type="text"
             placeholder="Search by Project Name..."
             onChange={(e) => setInputValue((e.target.value).toUpperCase())}
           />
-        </Form>
+        </form>
         <span>Sort By</span>
         <select>
           <option defaultValue="-- select an option --">-- select an option --</option>
