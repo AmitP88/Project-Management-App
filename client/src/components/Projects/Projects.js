@@ -276,6 +276,8 @@ const Projects = (props) => {
         <span>Sort By</span>
         <select>
           <option defaultValue="-- select an option --">-- select an option --</option>
+          <option>Date Created</option>
+          <option>Alphabetical</option>
           <option>Progress % - Low to High</option>
           <option>Progress % - High to Low</option>
           <option>Due Date - Closest Date First</option>
