@@ -269,7 +269,7 @@ const Projects = (props) => {
         <form className="SearchForm">
           <input
             type="text"
-            placeholder="Search by Project Name..."
+            placeholder="Find a project by name..."
             onChange={(e) => setInputValue((e.target.value).toUpperCase())}
           />
         </form>
