@@ -132,7 +132,7 @@ const Projects = (props) => {
           </Card.Subtitle>
           <Progress />
           <div className="buttons_container">
-            <Button variant="info" className="button">Go to Page</Button>
+            <button className="button Page_button">Go to Page</button>
             {/* <Button variant="danger" className="button" onClick={handleShowDeleteModal}>Delete Project</Button> */}
           </div>        
         </Card.Body>
@@ -283,7 +283,7 @@ const Projects = (props) => {
           <option>Due Date - Closest Date First</option>
           <option>Due Date - Closest Date Last</option>
         </select>
-        <Button variant="success" onClick={handleShowAddModal}>Add New Project</Button>
+        <button className="button Add_New_Project_button" onClick={handleShowAddModal}>Add New Project</button>
       </div>
     );
   };
