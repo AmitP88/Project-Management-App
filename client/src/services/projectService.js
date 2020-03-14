@@ -12,5 +12,11 @@ export default {
   getAll: async () => {
     let res = await axios.get(`/api/projects`);
     return res.data || [];
+  },
+// GET a selected project ("Read One" method in CRUD)
+  getOne: async () => {
+    let selected_project = store.getState().storeProjectNameReducer.projectName;
+    let res = await axios.get(`/api/projects`, selected_project);
+    return res.data || [];
   }
 }

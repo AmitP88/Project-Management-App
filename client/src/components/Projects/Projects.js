@@ -123,11 +123,17 @@ const Projects = (props) => {
       );
     };
 
+    const getSelectedProject = () => {
+      let res = projectService.getOne();
+      console.log('selected project: ', res);
+    }
+
     const handleOnClickPageButton = (e) => {
       e.preventDefault();
       console.log('project name from db: ', project.name);
       props.dispatch({ type: STORE_PROJECT_NAME, payload: { projectName: project.name } });
       console.log('redux store: ', store.getState());
+      getSelectedProject();
     };
 
     return (
