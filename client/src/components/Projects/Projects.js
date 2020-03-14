@@ -202,8 +202,8 @@ const Projects = (props) => {
               />
             </Form.Group>
             <Modal.Footer>
-              <Button variant="secondary" onClick={handleCloseAddModal}>Cancel</Button>
-              <Button variant="primary" type="submit">Add Project</Button>
+              <button className="button Cancel_New_Project-button" onClick={handleCloseAddModal}>Cancel</button>
+              <button className="button Add_New_Project_button" type="submit">Add Project</button>
             </Modal.Footer>
           </Form>
         </Modal.Body>
