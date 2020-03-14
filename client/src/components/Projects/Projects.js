@@ -132,7 +132,7 @@ const Projects = (props) => {
           </Card.Subtitle>
           <Progress />
           <div className="buttons_container">
-            <button className="button Page_button">Go to Page</button>
+            <button className="button Page_button" onClick={() => console.log(project.name)}>Go to Page</button>
             {/* <Button variant="danger" className="button" onClick={handleShowDeleteModal}>Delete Project</Button> */}
           </div>        
         </Card.Body>
