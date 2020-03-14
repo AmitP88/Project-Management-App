@@ -154,6 +154,7 @@ const Projects = (props) => {
             </div>
           )
         }
+        {console.log(projects)}
       </div>
     );
   };
