@@ -29,6 +29,7 @@ import store from '../../redux/store/store';
 import { connect } from 'react-redux';
 
 import ADD_PROJECT_SUBMIT from '../../redux/actions/addProjectSubmit';
+import STORE_PROJECT_NAME from '../../redux/actions/storeProjectName';
 
 const Projects = (props) => {
   // Hook for getting projects
@@ -122,6 +123,13 @@ const Projects = (props) => {
       );
     };
 
+    const handleOnClickPageButton = (e) => {
+      e.preventDefault();
+      console.log('project name from db: ', project.name);
+      props.dispatch({ type: STORE_PROJECT_NAME, payload: { projectName: project.name } });
+      console.log('redux store: ', store.getState());
+    };
+
     return (
       <Card key={id} className="projectCard">
         <Card.Body>
@@ -132,7 +140,7 @@ const Projects = (props) => {
           </Card.Subtitle>
           <Progress />
           <div className="buttons_container">
-            <button className="button Page_button" onClick={() => console.log(project.name)}>Go to Page</button>
+            <button className="button Page_button" onClick={handleOnClickPageButton}>Go to Page</button>
             {/* <Button variant="danger" className="button" onClick={handleShowDeleteModal}>Delete Project</Button> */}
           </div>        
         </Card.Body>
@@ -302,7 +310,7 @@ const Projects = (props) => {
 
 const mapStateToProps = (state) => ({
   addProjectForm: state.addProjectForm,
-  searchProjectForm: state.searchProjectForm
+  storeProjectName: state.projectName
 });
 
 export default connect(mapStateToProps)(Projects);

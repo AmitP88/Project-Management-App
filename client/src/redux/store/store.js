@@ -1,5 +1,6 @@
 import { createStore, combineReducers } from 'redux';
 import addProjectSubmitReducer from '../reducers/addProjectSubmitReducer';
+import storeProjectNameReducer from '../reducers/storeProjectNameReducer';
 
 export const initialState = {
   addProjectForm: {
@@ -7,11 +8,13 @@ export const initialState = {
     deadline: '',
     tasks_completed: 0,
     total_tasks: 0
-  }
+  },
+  projectName: ''
 }
 
 const rootReducer = combineReducers({
-  addProjectSubmitReducer
+  addProjectSubmitReducer,
+  storeProjectNameReducer
 });
 
 const store = createStore(rootReducer);
