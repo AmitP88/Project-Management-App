@@ -13,7 +13,7 @@ app.post('/api/projects', async (req, res) => {
   }
 });
 
-// GET ALL projects (Read All op in CRUD)
+// GET ALL projects (Read All op in CRUD) or GET ONE project (Read One op in CRUD) if a query is passed to the request
 app.get('/api/projects', async (req, res) => {
   let projects = await ProjectModel.find(req.query);
 
@@ -26,18 +26,6 @@ app.get('/api/projects', async (req, res) => {
   }
 });
 
-// GET a project by a specific name (Read One op in CRUD)
-// app.get('/projects', async (req, res) => {
-//   // search query for name goes here stored in a variable
-//   const search_name = "insert search query here";
-//   const projects = await ProjectModel.find({ name: `${search_name}` });
-//   try {
-//     res.send(projects);
-//   } catch (err) {
-//     res.status(500).send(err);
-//   }
-// });
-
 // UPDATE an existing project on the projects collection using _id property (UPDATE op in CRUD)
 app.patch('/api/projects/:id', async (req, res) => {
   try {
@@ -48,7 +36,6 @@ app.patch('/api/projects/:id', async (req, res) => {
     res.status(500).send(err);
   }
 });
-
 
 // DELETE an existing project on the projects collection using _id property (DELETE op in CRUD)
 app.delete('/api/projects/:id', async (req, res) => {
