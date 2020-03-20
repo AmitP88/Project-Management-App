@@ -17,7 +17,7 @@ import { easeQuadInOut } from "d3-ease";
 import AnimatedProgressProvider from "./AnimatedProgressProvider";
 
 // Import components & styles from React Bootstrap
-import { Card, Button, Modal, Form } from 'react-bootstrap';
+import { Card, Modal, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import moment component for formatting date from deadline

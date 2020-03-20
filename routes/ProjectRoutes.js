@@ -15,8 +15,11 @@ app.post('/api/projects', async (req, res) => {
 
 // GET ALL projects (Read All op in CRUD)
 app.get('/api/projects', async (req, res) => {
-  const projects = await ProjectModel.find({}); // an empty object {} will return all projects
+  let projects = await ProjectModel.find(req.query);
+
   try {
+    console.log('req.query: ', req.query);
+    console.log('projects:', projects);
     res.send(projects);
   } catch (err) {
     res.status(500).send(err);

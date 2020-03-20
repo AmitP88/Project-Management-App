@@ -1,6 +1,8 @@
 import axios from 'axios';
 import store from '../redux/store/store';
 
+const qs = require('qs');
+
 export default {
 // POST a new project ("Create" method in CRUD)  
   postNew: async () => {
@@ -16,7 +18,14 @@ export default {
 // GET a selected project ("Read One" method in CRUD)
   getOne: async () => {
     let selected_project = store.getState().storeProjectNameReducer.projectName;
-    let res = await axios.get(`/api/projects`, selected_project);
+    let res = await axios.get(`/api/projects`, {
+      params: {
+        name: selected_project
+      },
+      paramsSerializer: params => {
+        return qs.stringify(params);
+      }
+    });
     return res.data || [];
   }
 }
