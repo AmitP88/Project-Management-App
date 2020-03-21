@@ -41,12 +41,6 @@ const Projects = (props) => {
   const handleCloseAddModal = () => setShowAddModal(false);
   const handleShowAddModal = () => setShowAddModal(true);
 
-
-  // Hooks for delete project modal
-  // const [showDeleteModal, setShowDeleteModal] = useState(false);
-  // const handleCloseDeleteModal = () => setShowDeleteModal(false);
-  // const handleShowDeleteModal = () => setShowDeleteModal(true);
-
   useEffect(() => {
     if(!projects) {
       getProjects();
@@ -55,7 +49,6 @@ const Projects = (props) => {
 
   const getProjects = async () => {
     let res = await projectService.getAll();
-    // console.log(res);
     setProjects(res);
   }
 
@@ -148,7 +141,6 @@ const Projects = (props) => {
           <Progress />
           <div className="buttons_container">
             <button className="button Page_button" onClick={handleOnClickPageButton}>Go to Page</button>
-            {/* <Button variant="danger" className="button" onClick={handleShowDeleteModal}>Delete Project</Button> */}
           </div>        
         </Card.Body>
       </Card>
@@ -174,17 +166,14 @@ const Projects = (props) => {
     );
   };
 
-
   // Modal component for adding new projects
   const AddProjectModal = () => {
-    // Hooks for add project form
     const [name, setName] = useState('');
     const [deadline, setDeadline] = useState('');
 
     const handleSubmit = (e) => {
       e.preventDefault();
       props.dispatch({ type: ADD_PROJECT_SUBMIT, payload: { name, deadline } });
-      // check to see if store gets updated
       console.log(store.getState());
       postNewProject();
       handleCloseAddModal();
@@ -226,42 +215,6 @@ const Projects = (props) => {
       </Modal>
     );
   };
-
-  // Modal component for deleting an existing project
-  // const DeleteProjectModal = () => {
-  //   return (
-  //     <Modal show={showDeleteModal} onHide={handleCloseDeleteModal}>
-  //       <Modal.Header closeButton>
-  //         <Modal.Title>Are you sure you want to delete this project?</Modal.Title>
-  //       </Modal.Header>
-  //       <Modal.Body>
-  //         <Form>
-  //           <Form.Group controlId="formProjectName">
-  //             <Form.Label>
-  //               This action <strong>cannot</strong> be undone.
-  //               This will permanently delete the (project name) project,
-  //               along with all of the projects' content including:
-  //               descriptions, uploaded files, created tasks and progress %,
-  //               hours logged, and deadlines.
-  //             </Form.Label>
-  //             <Form.Control
-  //               plaintext 
-  //               readOnly 
-  //               defaultValue="Please type (project name) to confirm."
-  //               style={{textAlign: 'left'}}
-  //             />
-  //             <Form.Control type="text" />
-  //           </Form.Group>
-  //         </Form>
-  //       </Modal.Body>
-  //       <Modal.Footer>
-  //         <Button variant="danger" onClick={handleCloseDeleteModal} style={{width: '100%'}}>
-  //           I understand, permanently delete this project
-  //         </Button>
-  //       </Modal.Footer>
-  //     </Modal>
-  //   );
-  // };
 
   // Component for search bar
   const SearchBar = () => {
@@ -314,7 +267,6 @@ const Projects = (props) => {
       </div>
       <SearchBar />
       <AddProjectModal />
-      {/* <DeleteProjectModal /> */}
       <List />
     </div>
   );
