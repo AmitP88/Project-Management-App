@@ -306,10 +306,12 @@ const Projects = (props) => {
 
   return (
     <div className="Projects">
-      <Link to='/'>
-        <button className="home_page">Home</button>
-      </Link>
-      <h1 className="pageTitle">Projects</h1>
+      <div className="header">
+        <Link to='/'>
+          <button className="home_page">Home</button>
+        </Link>
+        <h1 className="pageTitle">Projects</h1>      
+      </div>
       <SearchBar />
       <AddProjectModal />
       {/* <DeleteProjectModal /> */}
