@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Projects.sass';
 import './media_queries.sass';
 
@@ -305,6 +306,9 @@ const Projects = (props) => {
 
   return (
     <div className="Projects">
+      <Link to='/'>
+        <button className="home_page">Home</button>
+      </Link>
       <h1 className="pageTitle">Projects</h1>
       <SearchBar />
       <AddProjectModal />
