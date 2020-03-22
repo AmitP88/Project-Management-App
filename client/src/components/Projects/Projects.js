@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import './Projects.sass';
 import './media_queries.sass';
 
@@ -68,6 +68,10 @@ const Projects = (props) => {
     let total_tasks = project.total_tasks;
     let completed_percentage = ((tasks_completed/total_tasks)*100).toFixed(0);
 
+    // hook for navigating to project page
+    const [toProjectPage, setToProjectPage] = useState(false);
+    const navToProjectPage = () => setToProjectPage(true);
+
     // Component for displaying progress dial and ratio
     const Progress = () => {
       return (
@@ -128,23 +132,29 @@ const Projects = (props) => {
       props.dispatch({ type: STORE_PROJECT_NAME, payload: { projectName: project.name } });
       console.log('redux store: ', store.getState());
       getSelectedProject();
+      navToProjectPage();
     };
 
-    return (
-      <Card key={id} className="projectCard">
-        <Card.Body>
-          <Card.Title className="name">{name}</Card.Title>
-          <Card.Subtitle className="deadline">
-            {'Due: '} 
-            <Moment format="ddd MMMM D, YYYY">{deadline}</Moment>
-          </Card.Subtitle>
-          <Progress />
-          <div className="buttons_container">
-            <button className="button Page_button" onClick={handleOnClickPageButton}>Go to Page</button>
-          </div>        
-        </Card.Body>
-      </Card>
-    );
+    if(toProjectPage === true) {
+      return <Redirect to='/projectpage' />
+    } else {
+      return (
+        <Card key={id} className="projectCard">
+          <Card.Body>
+            <Card.Title className="name">{name}</Card.Title>
+            <Card.Subtitle className="deadline">
+              {'Due: '} 
+              <Moment format="ddd MMMM D, YYYY">{deadline}</Moment>
+            </Card.Subtitle>
+            <Progress />
+            <div className="buttons_container">
+              <button className="button Page_button" onClick={handleOnClickPageButton}>Go to Page</button>
+            </div>
+          </Card.Body>
+        </Card>
+      );
+    }
+
   };
 
   // Component for displaying all projects

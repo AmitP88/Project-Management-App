@@ -6,6 +6,7 @@ import './media_queries.sass';
 // import page components
 import Home from './components/Home/Home';
 import Projects from './components/Projects/Projects';
+import ProjectPage from './components/ProjectPage/ProjectPage';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <Switch>
         <Route path='/' component={Home} exact />
         <Route path='/projects' component={Projects} />
+        <Route path='/projectpage' component={ProjectPage} />
       </Switch>
     </div>
   );
