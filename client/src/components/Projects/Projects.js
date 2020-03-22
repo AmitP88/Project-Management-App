@@ -136,7 +136,7 @@ const Projects = (props) => {
     };
 
     if(toProjectPage === true) {
-      return <Redirect to='/projectpage' />
+      return <Redirect key={0} to='/projectpage' />
     } else {
       return (
         <Card key={id} className="projectCard">
