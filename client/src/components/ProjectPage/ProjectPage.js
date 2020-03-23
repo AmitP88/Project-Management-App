@@ -26,6 +26,16 @@ const ProjectPage = () => {
           <Moment format="ddd MMMM D, YYYY">{selected_project.deadline}</Moment>
         </div>
       </div>
+      <div className="page_content">
+        <div className="row">
+          <div className="container"></div>
+          <div className="container"></div>
+        </div>
+        <div className="row">
+          <div className="container"></div>
+          <div className="container"></div>
+        </div>
+      </div>
     </div>
   );
 }
