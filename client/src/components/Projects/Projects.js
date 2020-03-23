@@ -126,7 +126,7 @@ const Projects = (props) => {
       const res = await projectService.getOne();
       // console.log('selected project: ', res);
       props.dispatch({ type: GET_SELECTED_PROJECT, payload: { name: res[0].name, deadline: res[0].deadline, tasks_completed: res[0].tasks_completed, total_tasks: res[0].total_tasks } });
-      console.log('redux store: ', store.getState());
+      // console.log('redux store: ', store.getState());
       navToProjectPage();      
     }
 
@@ -146,7 +146,7 @@ const Projects = (props) => {
           <Card.Body>
             <Card.Title className="name">{name}</Card.Title>
             <Card.Subtitle className="deadline">
-              {'Due: '} 
+              {'Deadline: '} 
               <Moment format="ddd MMMM D, YYYY">{deadline}</Moment>
             </Card.Subtitle>
             <Progress />
