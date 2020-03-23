@@ -31,6 +31,7 @@ import { connect } from 'react-redux';
 
 import ADD_PROJECT_SUBMIT from '../../redux/actions/addProjectSubmit';
 import STORE_PROJECT_NAME from '../../redux/actions/storeProjectName';
+import GET_SELECTED_PROJECT from '../../redux/actions/getSelectedProject';
 
 const Projects = (props) => {
   // Hook for getting projects
@@ -121,9 +122,11 @@ const Projects = (props) => {
       );
     };
 
-    const getSelectedProject = () => {
-      let res = projectService.getOne();
+    const getSelectedProject = async () => {
+      const res = await projectService.getOne();
       console.log('selected project: ', res);
+      props.dispatch({ type: GET_SELECTED_PROJECT, payload: { name: res[0].name, deadline: res[0].deadline, tasks_completed: res[0].tasks_completed, total_tasks: res[0].total_tasks } });
+      console.log('redux store: ', store.getState());
     }
 
     const handleOnClickPageButton = (e) => {
@@ -284,7 +287,8 @@ const Projects = (props) => {
 
 const mapStateToProps = (state) => ({
   addProjectForm: state.addProjectForm,
-  storeProjectName: state.projectName
+  storeProjectName: state.projectName,
+  getSelectedProject: state.selectedProject
 });
 
 export default connect(mapStateToProps)(Projects);
