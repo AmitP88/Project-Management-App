@@ -6,14 +6,14 @@ import store from '../../redux/store/store';
 import { connect } from 'react-redux';
 
 const ProjectPage = () => {
+  let selected_project = store.getState().getSelectedProjectReducer;
 
   return (
     <div className="ProjectPage">
-      <h1>THIS IS THE PROJECT PAGE</h1>
+      <h1>{selected_project.name}</h1>
       <Link to='/projects'>
         <button className="projects_page">Go to Projects</button>
       </Link>
-      {console.log('redux store: ', store.getState())}
     </div>
   );
 }
