@@ -55,8 +55,8 @@ const Projects = (props) => {
 
   const postNewProject = async () => {
     let res = await projectService.postNew();
-    console.log(res);
-    console.log('store :', store.getState());
+    // console.log(res);
+    // console.log('store :', store.getState());
     getProjects();
   }
 
@@ -124,18 +124,18 @@ const Projects = (props) => {
 
     const getSelectedProject = async () => {
       const res = await projectService.getOne();
-      console.log('selected project: ', res);
+      // console.log('selected project: ', res);
       props.dispatch({ type: GET_SELECTED_PROJECT, payload: { name: res[0].name, deadline: res[0].deadline, tasks_completed: res[0].tasks_completed, total_tasks: res[0].total_tasks } });
       console.log('redux store: ', store.getState());
+      navToProjectPage();      
     }
 
     const handleOnClickPageButton = (e) => {
       e.preventDefault();
-      console.log('project name from db: ', project.name);
+      // console.log('project name from db: ', project.name);
       props.dispatch({ type: STORE_PROJECT_NAME, payload: { projectName: project.name } });
-      console.log('redux store: ', store.getState());
+      // console.log('redux store: ', store.getState());
       getSelectedProject();
-      navToProjectPage();
     };
 
     if(toProjectPage === true) {
@@ -174,7 +174,7 @@ const Projects = (props) => {
             </div>
           )
         }
-        {console.log(projects)}
+        {/* console.log(projects) */}
       </div>
     );
   };
