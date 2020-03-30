@@ -154,7 +154,7 @@ const Projects = (props) => {
             </Card.Subtitle>
             <Progress />
             <div className="buttons_container">
-              <button className="button Page_button" onClick={handleOnClickPageButton}>Go to Page</button>
+              <Button variant="contained" className="go_to_page" onClick={handleOnClickPageButton}>Go to Page</Button>
             </div>
           </Card.Body>
         </Card>
@@ -224,7 +224,7 @@ const Projects = (props) => {
             </Form.Group>
             <Modal.Footer>
               <button className="button Cancel_New_Project-button" onClick={handleCloseAddModal}>Cancel</button>
-              <button className="button Add_New_Project_button" type="submit">Add Project</button>
+              <Button variant="contained" className="add" type="submit">Add Project</Button>
             </Modal.Footer>
           </Form>
         </Modal.Body>
@@ -268,7 +268,7 @@ const Projects = (props) => {
           <option>Due Date - Closest Date First</option>
           <option>Due Date - Closest Date Last</option>
         </select>
-        <Button variant="contained" color="primary" onClick={handleShowAddModal}>Add New Project</Button>
+        <Button variant="contained" className="add" onClick={handleShowAddModal}>Add New Project</Button>
       </div>
     );
   };
