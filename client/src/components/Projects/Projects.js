@@ -21,6 +21,9 @@ import AnimatedProgressProvider from "./AnimatedProgressProvider";
 import { Card, Modal, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+// Import styled components from Material UI
+import Button from '@material-ui/core/Button';
+
 // Import moment component for formatting date from deadline
 import Moment from 'react-moment';
 import 'moment-timezone';
@@ -265,7 +268,7 @@ const Projects = (props) => {
           <option>Due Date - Closest Date First</option>
           <option>Due Date - Closest Date Last</option>
         </select>
-        <button className="button Add_New_Project_button" onClick={handleShowAddModal}>Add New Project</button>
+        <Button variant="contained" color="primary" onClick={handleShowAddModal}>Add New Project</Button>
       </div>
     );
   };
