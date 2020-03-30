@@ -223,7 +223,7 @@ const Projects = (props) => {
               />
             </Form.Group>
             <Modal.Footer>
-              <button className="button Cancel_New_Project-button" onClick={handleCloseAddModal}>Cancel</button>
+              <Button variant="contained" className="cancel" color="surface" onClick={handleCloseAddModal}>Cancel</Button>
               <Button variant="contained" className="add" type="submit">Add Project</Button>
             </Modal.Footer>
           </Form>
