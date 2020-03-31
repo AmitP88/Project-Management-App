@@ -38,7 +38,7 @@ const BottomBar = () => {
         <Toolbar>
           <NavLink to='/' style={{ textDecoration: 'none', color: 'white', width: 'min-content' }} activeStyle={{ color: '#84ffff' }} exact>
             <Box display='flex' flexWrap='wrap' css={{ maxWidth: 70, margin: 10 }}>
-              <Box mx='auto' css={{ width: '100%' }}>
+              <Box mx='auto' display='flex' justifyContent='center' css={{ width: '100%' }}>
                 <DashboardIcon className={classes.icon} />            
               </Box>
               <Typography className={classes.title} variant='caption' noWrap>
@@ -49,7 +49,7 @@ const BottomBar = () => {
 
           <NavLink to='/projects' style={{ textDecoration: 'none', color: 'white', width: 'min-content' }} activeStyle={{ color: '#84ffff' }} exact>
             <Box display='flex' flexWrap='wrap' css={{ maxWidth: 70, margin: 10 }}>
-              <Box mx='auto' css={{ width: '100%' }}>
+              <Box mx='auto' display='flex' justifyContent='center' css={{ width: '100%' }}>
                 <LibraryBooksIcon className={classes.icon} />            
               </Box>
               <Typography className={classes.title} variant='caption' noWrap>
@@ -60,7 +60,7 @@ const BottomBar = () => {
 
         <NavLink to='/' style={{ textDecoration: 'none', color: 'white', width: 'min-content' }} activeStyle={{ color: '#84ffff' }} exact>
           <Box display='flex' flexWrap='wrap' css={{ maxWidth: 70, margin: 10 }}>
-            <Box mx='auto' css={{ width: '100%' }}>
+            <Box mx='auto' display='flex' justifyContent='center' css={{ width: '100%' }}>
               <AssessmentIcon className={classes.icon} />            
             </Box>
             <Typography className={classes.title} variant='caption' noWrap>
@@ -71,7 +71,7 @@ const BottomBar = () => {
 
       <NavLink to='/' style={{ textDecoration: 'none', color: 'white', width: 'min-content' }} activeStyle={{ color: '#84ffff' }} exact>
         <Box display='flex' flexWrap='wrap' css={{ maxWidth: 70, margin: 10 }}>
-          <Box mx='auto' css={{ width: '100%' }}>
+          <Box mx='auto' display='flex' justifyContent='center' css={{ width: '100%' }}>
             <GroupIcon className={classes.icon} />            
           </Box>
           <Typography className={classes.title} variant='caption' noWrap>
