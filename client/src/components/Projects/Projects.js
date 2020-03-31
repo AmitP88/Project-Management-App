@@ -234,23 +234,24 @@ const Projects = (props) => {
 
   // Component for search bar
   const SearchBar = () => {
-    const [input_value, setInputValue] = useState('');
-    const firstUpdate = useRef(true);
+    // const [input_value, setInputValue] = useState('');
+    // const firstUpdate = useRef(true);
 
-    useEffect(() => {
-      if (firstUpdate.current) {
-        firstUpdate.current = false;
-        return;
-      }
-      console.log(input_value);
-      let filtered = projects.filter((project) => project.name.startsWith(input_value));
-      console.log('filtered:', filtered);
-      // Need to prevent SearchBar component from re-rendering when calling setProjects
-      // setProjects(filtered);
-    });
+    // useEffect(() => {
+    //   if (firstUpdate.current) {
+    //     firstUpdate.current = false;
+    //     return;
+    //   }
+    //   console.log(input_value);
+    //   let filtered = projects.filter((project) => project.name.startsWith(input_value));
+    //   console.log('filtered:', filtered);
+    //   // Need to prevent SearchBar component from re-rendering when calling setProjects
+    //   // setProjects(filtered);
+    // });
 
     return (
       <div className="searchBar">
+      {/**
         <form className="SearchForm">
           <input
             type="text"
@@ -258,7 +259,8 @@ const Projects = (props) => {
             onChange={(e) => setInputValue((e.target.value).toUpperCase())}
           />
         </form>
-        <span>Sort By</span>
+        <span>Sort By</span>      
+      */}
         <select>
           <option defaultValue="-- select an option --">-- select an option --</option>
           <option>Date Created</option>
