@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography';
 
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
+import AssessmentIcon from '@material-ui/icons/Assessment';
+import GroupIcon from '@material-ui/icons/Group';
 
 import './BottomBar.sass';
 
@@ -34,27 +36,49 @@ const BottomBar = () => {
     <Box display={{ xs: 'block', sm: 'none' }}>
       <AppBar position="fixed" color="primary" className={classes.appBar} style={{ backgroundColor: '#311b92' }}>
         <Toolbar>
-          <NavLink to='/' style={{ textDecoration: 'none', color: 'white' }} activeStyle={{ color: '#84ffff' }} exact>
+          <NavLink to='/' style={{ textDecoration: 'none', color: 'white', width: 'min-content' }} activeStyle={{ color: '#84ffff' }} exact>
             <Box display='flex' flexWrap='wrap' css={{ maxWidth: 70, margin: 10 }}>
-              <Box mx='auto' css={{ width: 45 }}>
+              <Box mx='auto' css={{ width: '100%' }}>
                 <DashboardIcon className={classes.icon} />            
               </Box>
               <Typography className={classes.title} variant='caption' noWrap>
                 Dashboard
-              </Typography>          
+              </Typography>
             </Box>
           </NavLink>
 
-          <NavLink to='/projects' style={{ textDecoration: 'none', color: 'white' }} activeStyle={{ color: '#84ffff' }} exact>
+          <NavLink to='/projects' style={{ textDecoration: 'none', color: 'white', width: 'min-content' }} activeStyle={{ color: '#84ffff' }} exact>
             <Box display='flex' flexWrap='wrap' css={{ maxWidth: 70, margin: 10 }}>
-              <Box mx='auto' css={{ width: 55 }}>
+              <Box mx='auto' css={{ width: '100%' }}>
                 <LibraryBooksIcon className={classes.icon} />            
               </Box>
               <Typography className={classes.title} variant='caption' noWrap>
                 Projects
-              </Typography>          
+              </Typography>
             </Box>
           </NavLink>
+
+        <NavLink to='/' style={{ textDecoration: 'none', color: 'white', width: 'min-content' }} activeStyle={{ color: '#84ffff' }} exact>
+          <Box display='flex' flexWrap='wrap' css={{ maxWidth: 70, margin: 10 }}>
+            <Box mx='auto' css={{ width: '100%' }}>
+              <AssessmentIcon className={classes.icon} />            
+            </Box>
+            <Typography className={classes.title} variant='caption' noWrap>
+              Productivity
+            </Typography>
+          </Box>
+        </NavLink>
+
+      <NavLink to='/' style={{ textDecoration: 'none', color: 'white', width: 'min-content' }} activeStyle={{ color: '#84ffff' }} exact>
+        <Box display='flex' flexWrap='wrap' css={{ maxWidth: 70, margin: 10 }}>
+          <Box mx='auto' css={{ width: '100%' }}>
+            <GroupIcon className={classes.icon} />            
+          </Box>
+          <Typography className={classes.title} variant='caption' noWrap>
+            Team
+          </Typography>
+        </Box>
+      </NavLink>
 
         </Toolbar>
       </AppBar>      
