@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchAppBar() {
+const SearchBar = () => {
   const classes = useStyles();
 
   return (
@@ -108,3 +108,5 @@ export default function SearchAppBar() {
     </div>
   );
 }
+
+export default SearchBar;

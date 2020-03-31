@@ -4,7 +4,7 @@ import './App.sass';
 import './media_queries.sass';
 
 // import app header
-import AppBar from './components/AppBar/AppBar';
+import SearchBar from './components/SearchBar/SearchBar';
 
 // import page components
 import Home from './components/Home/Home';
@@ -14,7 +14,7 @@ import ProjectPage from './components/ProjectPage/ProjectPage';
 const App = () => {
   return (
     <div className="App">
-      <AppBar />
+      <SearchBar />
       <Switch>
         <Route path='/' component={Home} exact />
         <Route path='/projects' component={Projects} />
