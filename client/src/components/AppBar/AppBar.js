@@ -8,16 +8,18 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 
+import BlurCircularIcon from '@material-ui/icons/BlurCircular';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(1),
   },
   title: {
     flexGrow: 1,
-    display: 'none',
+    // display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
@@ -30,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: fade(theme.palette.common.white, 0.25),
     },
     marginLeft: 0,
-    width: '100%',
+    width: '50%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
       width: 'auto',
@@ -78,8 +80,9 @@ export default function SearchAppBar() {
           >
             <MenuIcon />
           </IconButton>
+          <BlurCircularIcon />
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            rbital
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
