@@ -254,6 +254,12 @@ const Projects = (props) => {
     //   // setProjects(filtered);
     // });
 
+    const [sorted, setSorted] = useState('Date Created');
+
+    const handleSortedChange = (event) => {
+      setSorted(event.target.value);
+    }
+
     const useStyles = makeStyles((theme) => ({
       formControl: {
         margin: theme.spacing(1),
@@ -283,14 +289,20 @@ const Projects = (props) => {
 
       <FormControl variant='outlined' className={classes.formControl}>
         <InputLabel id="sort-by-label">Sort By</InputLabel>
-        <Select labelId='sort-by-label' id='sort-by' label='Sort By'>
-          <MenuItem value=''><em>Date Created</em></MenuItem>
-          <MenuItem value=''>Alphabetical</MenuItem>
-          <MenuItem value=''>Progress % - Low to High</MenuItem>
-          <MenuItem value=''>Progress % - High to Low</MenuItem>
-          <MenuItem value=''>Due Date - Closest Date First</MenuItem>
-          <MenuItem value=''>Due Date - Closest Date Last</MenuItem>
-        </Select>      
+        <Select 
+          labelId='sort-by-label' 
+          id='sort-by' 
+          label='Sort By' 
+          value={sorted}
+          onChange={handleSortedChange}
+        >
+          <MenuItem value={'Date Created'}>Date Created</MenuItem>
+          <MenuItem value={'Alphabetical'}>Alphabetical</MenuItem>
+          <MenuItem value={'Progress % - Low to High'}>Progress % - Low to High</MenuItem>
+          <MenuItem value={'Progress % - High to Low'}>Progress % - High to Low</MenuItem>
+          <MenuItem value={'Due Date - Closest Date First'}>Due Date - Closest Date First</MenuItem>
+          <MenuItem value={'Due Date - Closest Date Last'}>Due Date - Closest Date Last</MenuItem>
+        </Select>
       </FormControl>
 
         <Button variant="contained" className="add" onClick={handleShowAddModal}>Add New Project</Button>
