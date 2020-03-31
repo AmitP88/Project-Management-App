@@ -9,6 +9,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 
 import BlurCircularIcon from '@material-ui/icons/BlurCircular';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -72,14 +73,16 @@ export default function SearchAppBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
+          <Box display={{ xs: 'none', sm: 'block' }}>
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="open drawer"
+            >
+              <MenuIcon />
+            </IconButton>
+          </Box>
           <BlurCircularIcon />
           <Typography className={classes.title} variant="h6" noWrap>
             rbital
