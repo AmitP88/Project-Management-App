@@ -6,6 +6,9 @@ import './media_queries.sass';
 // import app header
 import SearchBar from './components/SearchBar/SearchBar';
 
+// import mobile navbar
+import NavBar from './components/NavBar/NavBar';
+
 // import page components
 import Home from './components/Home/Home';
 import Projects from './components/Projects/Projects';
@@ -20,6 +23,7 @@ const App = () => {
         <Route path='/projects' component={Projects} />
         <Route path='/projectpage' component={ProjectPage} />
       </Switch>
+      <NavBar />
     </div>
   );
 }
