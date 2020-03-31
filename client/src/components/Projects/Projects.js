@@ -23,6 +23,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import styled components from Material UI
 import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 // Import moment component for formatting date from deadline
 import Moment from 'react-moment';
@@ -249,6 +254,20 @@ const Projects = (props) => {
     //   // setProjects(filtered);
     // });
 
+    const useStyles = makeStyles((theme) => ({
+      formControl: {
+        margin: theme.spacing(1),
+        minWidth: 120,
+        backgroundColor: '#ffffff'
+      },
+      selectEmpty: {
+        marginTop: theme.spacing(2),
+        backgroundColor: '#ffffff'
+      },
+    }));
+
+    const classes = useStyles();
+
     return (
       <div className="searchBar">
       {/**
@@ -261,15 +280,19 @@ const Projects = (props) => {
         </form>
         <span>Sort By</span>      
       */}
-        <select>
-          <option defaultValue="-- select an option --">-- select an option --</option>
-          <option>Date Created</option>
-          <option>Alphabetical</option>
-          <option>Progress % - Low to High</option>
-          <option>Progress % - High to Low</option>
-          <option>Due Date - Closest Date First</option>
-          <option>Due Date - Closest Date Last</option>
-        </select>
+
+      <FormControl variant='outlined' className={classes.formControl}>
+        <InputLabel id="sort-by-label">Sort By</InputLabel>
+        <Select labelId='sort-by-label' id='sort-by' label='Sort By'>
+          <MenuItem value=''><em>Date Created</em></MenuItem>
+          <MenuItem value=''>Alphabetical</MenuItem>
+          <MenuItem value=''>Progress % - Low to High</MenuItem>
+          <MenuItem value=''>Progress % - High to Low</MenuItem>
+          <MenuItem value=''>Due Date - Closest Date First</MenuItem>
+          <MenuItem value=''>Due Date - Closest Date Last</MenuItem>
+        </Select>      
+      </FormControl>
+
         <Button variant="contained" className="add" onClick={handleShowAddModal}>Add New Project</Button>
       </div>
     );
