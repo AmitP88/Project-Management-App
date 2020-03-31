@@ -29,6 +29,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
+import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
+
 // Import moment component for formatting date from deadline
 import Moment from 'react-moment';
 import 'moment-timezone';
@@ -305,7 +307,9 @@ const Projects = (props) => {
         </Select>
       </FormControl>
 
-        <Button variant="contained" className="add" onClick={handleShowAddModal}>Add New Project</Button>
+        <Button variant="contained" className="add">
+          <AddToPhotosIcon onClick={handleShowAddModal} className='add_icon' />
+        </Button>
       </div>
     );
   };
