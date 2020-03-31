@@ -312,9 +312,6 @@ const Projects = (props) => {
 
   return (
     <div className="Projects">
-      <div className="header">
-        <h1 className="pageTitle">Projects</h1>      
-      </div>
       <SearchBar />
       <AddProjectModal />
       <List />
