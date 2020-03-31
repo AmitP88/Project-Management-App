@@ -72,8 +72,8 @@ const SearchBar = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
+    <div>
+      <AppBar position="static" style={{ backgroundColor: '#311b92' }}>
         <Toolbar>
           <Box display={{ xs: 'none', sm: 'block' }}>
             <IconButton
