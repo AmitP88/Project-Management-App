@@ -4,10 +4,10 @@ import './App.sass';
 import './media_queries.sass';
 
 // import app header
-import SearchBar from './components/SearchBar/SearchBar';
+import TopBar from './components/TopBar/TopBar';
 
 // import mobile navbar
-import NavBar from './components/NavBar/NavBar';
+import BottomBar from './components/BottomBar/BottomBar';
 
 // import page components
 import Home from './components/Home/Home';
@@ -17,13 +17,13 @@ import ProjectPage from './components/ProjectPage/ProjectPage';
 const App = () => {
   return (
     <div className="App">
-      <SearchBar />
+      <TopBar />
       <Switch>
         <Route path='/' component={Home} exact />
         <Route path='/projects' component={Projects} />
         <Route path='/projectpage' component={ProjectPage} />
       </Switch>
-      <NavBar />
+      <BottomBar />
     </div>
   );
 }

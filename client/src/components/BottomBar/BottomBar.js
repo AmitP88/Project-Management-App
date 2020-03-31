@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 
-import './NavBar.sass';
+import './BottomBar.sass';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NavBar = () => {
+const BottomBar = () => {
   const classes = useStyles();
 
   return (
@@ -62,4 +62,4 @@ const NavBar = () => {
   );
 }
 
-export default NavBar;
+export default BottomBar;

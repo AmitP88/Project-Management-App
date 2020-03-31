@@ -68,12 +68,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SearchBar = () => {
+const TopBar = () => {
   const classes = useStyles();
 
   return (
     <div>
-      <AppBar position="static" style={{ backgroundColor: '#311b92' }}>
+      <AppBar position="fixed" style={{ backgroundColor: '#311b92' }}>
         <Toolbar>
           <Box display={{ xs: 'none', sm: 'block' }}>
             <IconButton
@@ -109,4 +109,4 @@ const SearchBar = () => {
   );
 }
 
-export default SearchBar;
+export default TopBar;
