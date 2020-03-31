@@ -9,6 +9,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 
 import BlurCircularIcon from '@material-ui/icons/BlurCircular';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
@@ -32,10 +33,11 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       backgroundColor: fade(theme.palette.common.white, 0.25),
     },
+    marginRight: theme.spacing(2),
     marginLeft: 0,
-    width: '50%',
+    width: '55%',
     [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(1),
+      marginLeft: theme.spacing(3),
       width: 'auto',
     },
   },
@@ -100,6 +102,7 @@ export default function SearchAppBar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
+          <AccountCircleIcon />
         </Toolbar>
       </AppBar>
     </div>
