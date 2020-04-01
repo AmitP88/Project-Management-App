@@ -18,7 +18,7 @@ import { easeQuadInOut } from "d3-ease";
 import AnimatedProgressProvider from "./AnimatedProgressProvider";
 
 // Import components & styles from React Bootstrap
-import { Card, Modal, Form } from 'react-bootstrap';
+import { Modal, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import styled components from Material UI
@@ -28,8 +28,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
+import Card from '@material-ui/core/Card';
 
 // Import moment component for formatting date from deadline
 import Moment from 'react-moment';
@@ -153,17 +153,17 @@ const Projects = (props) => {
     } else {
       return (
         <Card key={id} className="projectCard">
-          <Card.Body>
-            <Card.Title className="name">{name}</Card.Title>
-            <Card.Subtitle className="deadline">
+          <div>
+            <h1 className="name">{name}</h1>
+            <h2 className="deadline">
               {'Deadline: '} 
               <Moment format="ddd MMMM D, YYYY">{deadline}</Moment>
-            </Card.Subtitle>
+            </h2>
             <Progress />
             <div className="buttons_container">
               <Button variant="contained" className="go_to_page" onClick={handleOnClickPageButton}>Go to Page</Button>
             </div>
-          </Card.Body>
+          </div>
         </Card>
       );
     }
