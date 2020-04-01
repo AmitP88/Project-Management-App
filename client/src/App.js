@@ -14,6 +14,7 @@ import Home from './components/Home/Home';
 import Projects from './components/Projects/Projects';
 import ProjectPage from './components/ProjectPage/ProjectPage';
 import Productivity from './components/Productivity/Productivity';
+import Team from './components/Team/Team';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Route path='/projects' component={Projects} />
         <Route path='/projectpage' component={ProjectPage} />
         <Route path='/productivity' component={Productivity} />
+        <Route path='/team' component={Team} />
       </Switch>
       <BottomBar />
     </div>
