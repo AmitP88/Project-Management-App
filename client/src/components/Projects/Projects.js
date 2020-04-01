@@ -152,17 +152,16 @@ const Projects = (props) => {
       return <Redirect key={0} to='/projectpage' />
     } else {
       return (
-        <Card key={id} className="projectCard">
-          <div>
-            <h1 className="name">{name}</h1>
-            <h2 className="deadline">
-              {'Deadline: '} 
+        <Card key={id} className="projectCard" onClick={handleOnClickPageButton}>
+          <div className="left-half">
+            <p className="name">{name}</p>
+            <p className="deadline-label">Deadline:</p>
+            <p className="deadline">
               <Moment format="ddd MMMM D, YYYY">{deadline}</Moment>
-            </h2>
-            <Progress />
-            <div className="buttons_container">
-              <Button variant="contained" className="go_to_page" onClick={handleOnClickPageButton}>Go to Page</Button>
-            </div>
+            </p>
+          </div>
+          <div className="right-half">
+            <Progress />          
           </div>
         </Card>
       );
