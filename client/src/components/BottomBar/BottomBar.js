@@ -19,6 +19,11 @@ const useStyles = makeStyles((theme) => ({
     top: 'auto',
     bottom: 0,
   },
+  toolBar: {
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'space-around',
+  },
   title: {
     flexGrow: 1,
     fontSize: 10,
@@ -35,7 +40,7 @@ const BottomBar = () => {
   return (
     <Box display={{ xs: 'block', sm: 'none' }}>
       <AppBar position="fixed" color="primary" className={classes.appBar} style={{ backgroundColor: '#311b92' }}>
-        <Toolbar>
+        <Toolbar className={classes.toolBar}>
           <NavLink to='/' style={{ textDecoration: 'none', color: 'white', width: 'min-content' }} activeStyle={{ color: '#84ffff' }} exact>
             <Box display='flex' flexWrap='wrap' css={{ maxWidth: 70, margin: 10 }}>
               <Box mx='auto' display='flex' justifyContent='center' css={{ width: '100%' }}>
