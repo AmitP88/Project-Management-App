@@ -7,11 +7,15 @@
     .projectCard
       display: flex;
       margin: 0 5px;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       width: auto;
       height: min-content;
-      .deadline
-        font-size: small;
+      .left-half
+        width: 48%;
+        .deadline-label, .deadline
+          font-size: small;
+      .right-half
+        width: 50%;
 
 @media screen and (min-width: 600px) and (max-width: 1023px)
   .list
