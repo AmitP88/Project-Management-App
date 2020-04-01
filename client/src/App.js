@@ -10,7 +10,7 @@ import TopBar from './components/TopBar/TopBar';
 import BottomBar from './components/BottomBar/BottomBar';
 
 // import page components
-import Home from './components/Home/Home';
+import Dashboard from './components/Dashboard/Dashboard';
 import Projects from './components/Projects/Projects';
 import ProjectPage from './components/ProjectPage/ProjectPage';
 import Productivity from './components/Productivity/Productivity';
@@ -21,7 +21,7 @@ const App = () => {
     <div className="App">
       <TopBar />
       <Switch>
-        <Route path='/' component={Home} exact />
+        <Route path='/' component={Dashboard} exact />
         <Route path='/projects' component={Projects} />
         <Route path='/projectpage' component={ProjectPage} />
         <Route path='/productivity' component={Productivity} />
