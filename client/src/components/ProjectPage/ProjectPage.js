@@ -13,9 +13,25 @@ import 'moment-timezone';
 
 // Import styled components from Material UI
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    margin: 5,
+  },
+}));
 
 const ProjectPage = () => {
   let selected_project = store.getState().getSelectedProjectReducer;
+  const classes = useStyles();
 
   return (
     <div className="ProjectPage">
@@ -30,6 +46,21 @@ const ProjectPage = () => {
           <Moment format="ddd MMMM D, YYYY">{selected_project.deadline}</Moment>
         </div>
       </div>
+
+      <Grid container>
+        <Grid item xs={12} sm={6}>
+          <Paper className={classes.paper}>Description Box</Paper>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Paper className={classes.paper}>Progress Box</Paper>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Paper className={classes.paper}>Upload Box</Paper>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Paper className={classes.paper}>Task Box</Paper>
+        </Grid>
+      </Grid>
     </div>
   );
 }
