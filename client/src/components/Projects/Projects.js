@@ -271,12 +271,29 @@ const Projects = (props) => {
         marginTop: theme.spacing(2),
         backgroundColor: '#ffffff'
       },
+      card: {
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+        margin: '0px 5px',
+        marginBottom: '10px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      add: {
+        backgroundColor: '#00bfa5',
+        color: 'white',
+      },
+      add_icon: {
+        fontSize: '40px',
+      }
     }));
 
     const classes = useStyles();
 
     return (
-      <div className="searchBar">
+      <Card className={classes.card}>
       {/**
         <form className="SearchForm">
           <input
@@ -288,28 +305,28 @@ const Projects = (props) => {
         <span>Sort By</span>      
       */}
 
-      <FormControl variant='outlined' className={classes.formControl}>
-        <InputLabel id="sort-by-label">Sort By</InputLabel>
-        <Select 
-          labelId='sort-by-label' 
-          id='sort-by' 
-          label='Sort By' 
-          value={sorted}
-          onChange={handleSortedChange}
-        >
-          <MenuItem value={'Date Created'}>Date Created</MenuItem>
-          <MenuItem value={'Alphabetical'}>Alphabetical</MenuItem>
-          <MenuItem value={'Progress % - Low to High'}>Progress % - Low to High</MenuItem>
-          <MenuItem value={'Progress % - High to Low'}>Progress % - High to Low</MenuItem>
-          <MenuItem value={'Due Date - Closest Date First'}>Due Date - Closest Date First</MenuItem>
-          <MenuItem value={'Due Date - Closest Date Last'}>Due Date - Closest Date Last</MenuItem>
-        </Select>
-      </FormControl>
+        <FormControl variant='outlined' className={classes.formControl}>
+          <InputLabel id="sort-by-label">Sort By</InputLabel>
+          <Select 
+            labelId='sort-by-label' 
+            id='sort-by' 
+            label='Sort By' 
+            value={sorted}
+            onChange={handleSortedChange}
+          >
+            <MenuItem value={'Date Created'}>Date Created</MenuItem>
+            <MenuItem value={'Alphabetical'}>Alphabetical</MenuItem>
+            <MenuItem value={'Progress % - Low to High'}>Progress % - Low to High</MenuItem>
+            <MenuItem value={'Progress % - High to Low'}>Progress % - High to Low</MenuItem>
+            <MenuItem value={'Due Date - Closest Date First'}>Due Date - Closest Date First</MenuItem>
+            <MenuItem value={'Due Date - Closest Date Last'}>Due Date - Closest Date Last</MenuItem>
+          </Select>
+        </FormControl>
 
-        <Button variant="contained" className="add">
-          <AddToPhotosIcon onClick={handleShowAddModal} className='add_icon' />
+        <Button variant="contained" className={classes.add}>
+          <AddToPhotosIcon onClick={handleShowAddModal} className={classes.add_icon} />
         </Button>
-      </div>
+      </Card>
     );
   };
 
