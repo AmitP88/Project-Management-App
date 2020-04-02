@@ -11,6 +11,9 @@ import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import 'moment-timezone';
 
+// Import styled components from Material UI
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+
 const ProjectPage = () => {
   let selected_project = store.getState().getSelectedProjectReducer;
 
@@ -18,22 +21,13 @@ const ProjectPage = () => {
     <div className="ProjectPage">
       <div className="header">
         <Link to='/projects'>
-          <button className="projects_page">Go to Projects</button>
+          <NavigateBeforeIcon />
+          Back to Projects
         </Link>
         <h1 className="project_name">{selected_project.name}</h1>
         <div className="deadline">
           {'Deadline: '}
           <Moment format="ddd MMMM D, YYYY">{selected_project.deadline}</Moment>
-        </div>
-      </div>
-      <div className="page_content">
-        <div className="row">
-          <div className="container"></div>
-          <div className="container"></div>
-        </div>
-        <div className="row">
-          <div className="container"></div>
-          <div className="container"></div>
         </div>
       </div>
     </div>
