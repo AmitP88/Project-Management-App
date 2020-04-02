@@ -35,19 +35,20 @@ const ProjectPage = () => {
 
   return (
     <div className="ProjectPage">
-      <div className="header">
-        <Link to='/projects'>
-          <NavigateBeforeIcon />
-          Back to Projects
-        </Link>
-        <h1 className="project_name">{selected_project.name}</h1>
-        <div className="deadline">
-          {'Deadline: '}
-          <Moment format="ddd MMMM D, YYYY">{selected_project.deadline}</Moment>
-        </div>
-      </div>
-
       <Grid container>
+        <Grid item xs={12} className="header">
+          <Paper className={classes.paper}>
+            <Link to='/projects'>
+              <NavigateBeforeIcon />
+              Back to Projects
+            </Link>
+            <h1 className="project_name">{selected_project.name}</h1>
+            <div className="deadline">
+              {'Deadline: '}
+              <Moment format="ddd MMMM D, YYYY">{selected_project.deadline}</Moment>
+            </div>          
+          </Paper>
+        </Grid>      
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>Description Box</Paper>
         </Grid>
