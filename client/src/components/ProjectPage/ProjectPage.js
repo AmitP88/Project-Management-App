@@ -16,12 +16,13 @@ import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import Card from '@material-ui/core/Card';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  paper: {
+  card: {
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
@@ -37,7 +38,7 @@ const ProjectPage = () => {
     <div className="ProjectPage">
       <Grid container>
         <Grid item xs={12} className="header">
-          <Paper className={classes.paper}>
+          <Card className={classes.card}>
             <Link to='/projects'>
               <NavigateBeforeIcon />
               Back to Projects
@@ -47,19 +48,39 @@ const ProjectPage = () => {
               {'Deadline: '}
               <Moment format="ddd MMMM D, YYYY">{selected_project.deadline}</Moment>
             </div>          
-          </Paper>
+          </Card>
         </Grid>      
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>Description Box</Paper>
+          <Card className={classes.card}>
+            <h6>Description Box</h6>
+            <Paper elevation={0} variant='outlined'>
+              Content goes here
+            </Paper>
+          </Card>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>Progress Box</Paper>
+          <Card className={classes.card}>
+            <h6>Progress Box</h6>
+            <Paper elevation={0} variant='outlined'>
+              Content goes here
+            </Paper>
+          </Card>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>Upload Box</Paper>
+          <Card className={classes.card}>
+            <h6>Documents Box</h6>
+            <Paper elevation={0} variant='outlined'>
+              Content goes here
+            </Paper>
+          </Card>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>Task Box</Paper>
+          <Card className={classes.card}>
+            <h6>Task Box</h6>
+            <Paper elevation={0} variant='outlined'>
+              Content goes here
+            </Paper>
+          </Card>
         </Grid>
       </Grid>
     </div>
