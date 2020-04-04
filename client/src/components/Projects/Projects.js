@@ -42,6 +42,8 @@ import { connect } from 'react-redux';
 import ADD_PROJECT_SUBMIT from '../../redux/actions/addProjectSubmit';
 import STORE_PROJECT_NAME from '../../redux/actions/storeProjectName';
 import GET_SELECTED_PROJECT from '../../redux/actions/getSelectedProject';
+import REQUEST_SENT from '../../redux/actions/requestSent';
+import REQUEST_SUCCEEDED from '../../redux/actions/requestSucceeded';
 
 const Projects = (props) => {
   // Hook for getting projects
@@ -59,7 +61,11 @@ const Projects = (props) => {
   })
 
   const getProjects = async () => {
+    props.dispatch({ type: REQUEST_SENT, payload: { requestStatus: 'request sent!' } });
+    console.log('request sent', store.getState());
     let res = await projectService.getAll();
+    props.dispatch({ type: REQUEST_SUCCEEDED, payload: { requestStatus: 'request succeeded!' } });
+    console.log('request succeeded', store.getState());
     setProjects(res);
   }
 
@@ -342,7 +348,8 @@ const Projects = (props) => {
 const mapStateToProps = (state) => ({
   addProjectForm: state.addProjectForm,
   storeProjectName: state.projectName,
-  getSelectedProject: state.selectedProject
+  getSelectedProject: state.selectedProject,
+  requestStatus: state.requestStatus
 });
 
 export default connect(mapStateToProps)(Projects);

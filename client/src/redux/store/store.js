@@ -2,6 +2,8 @@ import { createStore, combineReducers } from 'redux';
 import addProjectSubmitReducer from '../reducers/addProjectSubmitReducer';
 import storeProjectNameReducer from '../reducers/storeProjectNameReducer';
 import getSelectedProjectReducer from '../reducers/getSelectedProjectReducer';
+import requestSentReducer from '../reducers/requestSentReducer';
+import requestSucceededReducer from '../reducers/requestSucceededReducer';
 
 export const initialState = {
   addProjectForm: {
@@ -16,13 +18,16 @@ export const initialState = {
     deadline: '',
     tasks_completed: 0,
     total_tasks: 0
-  }
+  },
+  requestStatus: ''
 }
 
 const rootReducer = combineReducers({
   addProjectSubmitReducer,
   storeProjectNameReducer,
-  getSelectedProjectReducer
+  getSelectedProjectReducer,
+  requestSentReducer,
+  requestSucceededReducer
 });
 
 const store = createStore(rootReducer);
