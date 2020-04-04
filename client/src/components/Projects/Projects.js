@@ -62,10 +62,10 @@ const Projects = (props) => {
 
   const getProjects = async () => {
     props.dispatch({ type: REQUEST_SENT, payload: { requestStatus: 'request sent!' } });
-    console.log('request sent', store.getState());
+    console.log('request sent', store.getState().requestSentReducer);
     let res = await projectService.getAll();
     props.dispatch({ type: REQUEST_SUCCEEDED, payload: { requestStatus: 'request succeeded!' } });
-    console.log('request succeeded', store.getState());
+    console.log('request succeeded', store.getState().requestSentReducer);
     setProjects(res);
   }
 
@@ -340,7 +340,13 @@ const Projects = (props) => {
     <div className="Projects">
       <SearchBar />
       <AddProjectModal />
-      <List />
+      <div>
+        {
+          store.getState().requestSentReducer.requestStatus === 'request succeeded!' ?
+          <List /> :
+          <div>Loading...</div>
+        }      
+      </div>
     </div>
   );
 }
