@@ -44,6 +44,7 @@ import STORE_PROJECT_NAME from '../../redux/actions/storeProjectName';
 import GET_SELECTED_PROJECT from '../../redux/actions/getSelectedProject';
 import REQUEST_SENT from '../../redux/actions/requestSent';
 import REQUEST_SUCCEEDED from '../../redux/actions/requestSucceeded';
+import REQUEST_RESET from '../../redux/actions/requestReset';
 
 const Projects = (props) => {
   // Hook for getting projects
@@ -67,6 +68,8 @@ const Projects = (props) => {
     props.dispatch({ type: REQUEST_SUCCEEDED, payload: { requestStatus: 'request succeeded!' } });
     console.log('request succeeded', store.getState().requestSentReducer);
     setProjects(res);
+    props.dispatch({ type: REQUEST_RESET, payload: { requestStatus: '' } });
+    console.log('request reset', store.getState().requestSentReducer);
   }
 
   const postNewProject = async () => {
