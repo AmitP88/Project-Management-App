@@ -46,6 +46,9 @@ import REQUEST_SENT from '../../redux/actions/requestSent';
 import REQUEST_SUCCEEDED from '../../redux/actions/requestSucceeded';
 import REQUEST_RESET from '../../redux/actions/requestReset';
 
+// import React Loader Spinner
+import Loader from 'react-loader-spinner';
+
 const Projects = (props) => {
   // Hook for getting projects
   let [projects, setProjects] = useState(null);
@@ -347,7 +350,18 @@ const Projects = (props) => {
         {
           store.getState().requestSentReducer.requestStatus === 'request succeeded!' ?
           <List /> :
-          <div>Loading...</div>
+          <div
+            style={{
+              width: "100%",
+              height: "100vh",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "baseline",
+              marginTop: '50%'
+            }}
+          >
+            <Loader type="ThreeDots" color="#3f51b5" height={50} width={100} />
+          </div>
         }      
       </div>
     </div>
