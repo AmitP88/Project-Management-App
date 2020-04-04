@@ -303,7 +303,7 @@ const Projects = (props) => {
           </DialogContent>
           <DialogActions>
             <Button onClick={handleCloseAddModal} color='primary'>Cancel</Button>
-            <Button onClick={handleCloseAddModal} color='primary'>Add Project</Button>
+            <Button onClick={handleSubmit} color='primary'>Add Project</Button>
           </DialogActions>
         </Dialog>
        </div>
