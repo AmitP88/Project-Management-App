@@ -31,6 +31,13 @@ import Select from '@material-ui/core/Select';
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 import Card from '@material-ui/core/Card';
 
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+
 // Import moment component for formatting date from deadline
 import Moment from 'react-moment';
 import 'moment-timezone';
@@ -214,39 +221,62 @@ const Projects = (props) => {
     }
 
     return (
-      <Modal show={showAddModal} onHide={handleCloseAddModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>Add a New Project</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formProjectName">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter project name"
-                maxLength={20}
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-            </Form.Group>
-            <Form.Group controlId="formDeadline">
-              <Form.Label>Deadline</Form.Label>
-              <Form.Control
-                type="date"
-                value={deadline}
-                onChange={(e) => setDeadline(e.target.value)}
-                required
-              />
-            </Form.Group>
-            <Modal.Footer>
-              <Button variant="contained" className="cancel" color="surface" onClick={handleCloseAddModal}>Cancel</Button>
-              <Button variant="contained" className="add" type="submit">Add Project</Button>
-            </Modal.Footer>
-          </Form>
-        </Modal.Body>
-      </Modal>
+      /**
+        <Modal show={showAddModal} onHide={handleCloseAddModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>Add a New Project</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group controlId="formProjectName">
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter project name"
+                  maxLength={20}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </Form.Group>
+              <Form.Group controlId="formDeadline">
+                <Form.Label>Deadline</Form.Label>
+                <Form.Control
+                  type="date"
+                  value={deadline}
+                  onChange={(e) => setDeadline(e.target.value)}
+                  required
+                />
+              </Form.Group>
+              <Modal.Footer>
+                <Button variant="contained" className="cancel" color="surface" onClick={handleCloseAddModal}>Cancel</Button>
+                <Button variant="contained" className="add" type="submit">Add Project</Button>
+              </Modal.Footer>
+            </Form>
+          </Modal.Body>
+        </Modal>
+       */
+
+       <div>
+        <Dialog open={showAddModal} onClose={handleCloseAddModal}>
+          <DialogTitle>Add New Project</DialogTitle>
+          <DialogContent>
+            <TextField
+              autoFocus
+              margin='dense'
+              id='name'
+              label='Project Name'
+              type='text'
+              fullWidth
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseAddModal} color='primary'>Cancel</Button>
+            <Button onClick={handleCloseAddModal} color='primary'>Add Project</Button>
+          </DialogActions>
+        </Dialog>
+       </div>
+
     );
   };
 
