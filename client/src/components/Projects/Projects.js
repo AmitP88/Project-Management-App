@@ -38,6 +38,14 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
+import 'date-fns';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
+
 // Import moment component for formatting date from deadline
 import Moment from 'react-moment';
 import 'moment-timezone';
@@ -210,7 +218,11 @@ const Projects = (props) => {
   // Modal component for adding new projects
   const AddProjectModal = () => {
     const [name, setName] = useState('');
-    const [deadline, setDeadline] = useState('');
+    const [deadline, setDeadline] = useState(new Date('2014-08-18T21:11:54'));
+
+    const handleDeadlineChange = (date) => {
+      setDeadline(date);
+    }
 
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -268,7 +280,26 @@ const Projects = (props) => {
               label='Project Name'
               type='text'
               fullWidth
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
             />
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <KeyboardDatePicker
+                disableToolbar
+                variant="inline"
+                format="MM/dd/yyyy"
+                margin="normal"
+                id="date-picker-inline"
+                label="Date picker inline"
+                value={deadline}
+                onChange={handleDeadlineChange}
+                required
+                KeyboardButtonProps={{
+                  'aria-label': 'change date',
+                }}
+              />
+            </MuiPickersUtilsProvider>
           </DialogContent>
           <DialogActions>
             <Button onClick={handleCloseAddModal} color='primary'>Cancel</Button>
