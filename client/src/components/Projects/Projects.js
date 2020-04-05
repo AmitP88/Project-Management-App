@@ -202,6 +202,14 @@ const Projects = (props) => {
             let recently_added = projects.reverse();
             console.log(recently_added);
             return recently_added.map(project => ProjectCard(project));
+          case('Alphabetical'):
+            let alphabetical = projects.sort((a, b) => {
+              let nameA = a.name;
+              let nameB = b.name;
+              return nameA.localeCompare(nameB);
+            });
+            console.log(alphabetical);
+            return alphabetical.map(project => ProjectCard(project));
         }        
       } else {
         return (
@@ -349,7 +357,8 @@ const Projects = (props) => {
       <ProjectsBar />
       <AddProjectModal />
       <div>
-        {
+        <List />
+        {/**
           store.getState().requestSentReducer.requestStatus === 'request succeeded!' ?
           <List /> :
           <div
@@ -363,7 +372,8 @@ const Projects = (props) => {
             }}
           >
             <Loader type="ThreeDots" color="#3f51b5" height={50} width={100} />
-          </div>
+          </div>          
+          */
         }      
       </div>
     </div>
