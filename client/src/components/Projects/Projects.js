@@ -292,7 +292,7 @@ const Projects = (props) => {
     //   // setProjects(filtered);
     // });
 
-    const [sorted, setSorted] = useState('Date Created');
+    const [sorted, setSorted] = useState('Recently Added');
 
     const handleSortedChange = (event) => {
       setSorted(event.target.value);
@@ -351,7 +351,7 @@ const Projects = (props) => {
             value={sorted}
             onChange={handleSortedChange}
           >
-            <MenuItem value={'Date Created'}>Date Created</MenuItem>
+            <MenuItem value={'Recently Added'}>Recently Added</MenuItem>
             <MenuItem value={'Alphabetical'}>Alphabetical</MenuItem>
             <MenuItem value={'Progress % - Low to High'}>Progress % - Low to High</MenuItem>
             <MenuItem value={'Progress % - High to Low'}>Progress % - High to Low</MenuItem>
