@@ -195,17 +195,27 @@ const Projects = (props) => {
 
   // Component for displaying all projects
   const List = () => {
+    const renderProjects = () => {
+      if(projects && projects.length > 0){
+        switch(sorted) {
+          case('Recently Added'):
+            let recently_added = projects.reverse();
+            console.log(recently_added);
+            return recently_added.map(project => ProjectCard(project));
+        }        
+      } else {
+        return (
+          <div className="no_projects_found">
+            <p>No projects found. Click on the green + icon above to create a new project! :) </p>          
+          </div>
+        )
+      }
+
+    }
+
     return (
       <div className="list">
-        {
-          (projects && projects.length > 0) ? 
-          (projects.map(project => ProjectCard(project))) :
-          (
-            <div className="no_projects_found">
-              <p>No projects found. Click on the green + icon above to create a new project! :) </p>          
-            </div>
-          )
-        }
+        {renderProjects()}
       </div>
     );
   };
