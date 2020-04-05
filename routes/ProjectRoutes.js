@@ -18,8 +18,8 @@ app.get('/api/projects', async (req, res) => {
   let projects = await ProjectModel.find(req.query);
 
   try {
-    console.log('req.query: ', req.query);
-    console.log('projects:', projects);
+    // console.log('req.query: ', req.query);
+    // console.log('projects:', projects);
     res.send(projects);
   } catch (err) {
     res.status(500).send(err);

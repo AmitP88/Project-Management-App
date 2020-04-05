@@ -271,6 +271,10 @@ const Projects = (props) => {
       setSorted(event.target.value);
     }
 
+    useEffect(() => {
+      console.log('sorted:', sorted);      
+    });
+
     const useStyles = makeStyles((theme) => ({
       formControl: {
         margin: theme.spacing(1),
@@ -313,12 +317,12 @@ const Projects = (props) => {
             value={sorted}
             onChange={handleSortedChange}
           >
-            <MenuItem value={'Recently Added'}>Recently Added</MenuItem>
-            <MenuItem value={'Alphabetical'}>Alphabetical</MenuItem>
-            <MenuItem value={'Progress % - Low to High'}>Progress % - Low to High</MenuItem>
-            <MenuItem value={'Progress % - High to Low'}>Progress % - High to Low</MenuItem>
-            <MenuItem value={'Due Date - Closest Date First'}>Due Date - Closest Date First</MenuItem>
-            <MenuItem value={'Due Date - Closest Date Last'}>Due Date - Closest Date Last</MenuItem>
+            <MenuItem value={'Recently Added'} onClick={handleSortedChange}>Recently Added</MenuItem>
+            <MenuItem value={'Alphabetical'} onClick={handleSortedChange}>Alphabetical</MenuItem>
+            <MenuItem value={'Progress % - Low to High'} onClick={handleSortedChange}>Progress % - Low to High</MenuItem>
+            <MenuItem value={'Progress % - High to Low'} onClick={handleSortedChange}>Progress % - High to Low</MenuItem>
+            <MenuItem value={'Due Date - Closest Date First'} onClick={handleSortedChange}>Due Date - Closest Date First</MenuItem>
+            <MenuItem value={'Due Date - Closest Date Last'} onClick={handleSortedChange}>Due Date - Closest Date Last</MenuItem>
           </Select>
         </FormControl>
 
