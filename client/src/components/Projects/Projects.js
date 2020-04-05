@@ -195,8 +195,7 @@ const Projects = (props) => {
           (projects.map(project => ProjectCard(project))) :
           (
             <div className="no_projects_found">
-              <p>No projects found. Click on the plus icon below to create a new project! :) </p>
-              <FontAwesomeIcon className="plus_icon" icon={faPlusCircle} size="4x" onClick={handleShowAddModal} />            
+              <p>No projects found. Click on the green + icon above to create a new project! :) </p>          
             </div>
           )
         }
