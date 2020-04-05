@@ -233,42 +233,6 @@ const Projects = (props) => {
     }
 
     return (
-      /**
-        <Modal show={showAddModal} onHide={handleCloseAddModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>Add a New Project</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form onSubmit={handleSubmit}>
-              <Form.Group controlId="formProjectName">
-                <Form.Label>Name</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter project name"
-                  maxLength={20}
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                />
-              </Form.Group>
-              <Form.Group controlId="formDeadline">
-                <Form.Label>Deadline</Form.Label>
-                <Form.Control
-                  type="date"
-                  value={deadline}
-                  onChange={(e) => setDeadline(e.target.value)}
-                  required
-                />
-              </Form.Group>
-              <Modal.Footer>
-                <Button variant="contained" className="cancel" color="surface" onClick={handleCloseAddModal}>Cancel</Button>
-                <Button variant="contained" className="add" type="submit">Add Project</Button>
-              </Modal.Footer>
-            </Form>
-          </Modal.Body>
-        </Modal>
-       */
-
        <div>
         <Dialog open={showAddModal} onClose={handleCloseAddModal}>
           <DialogTitle>Add New Project</DialogTitle>
