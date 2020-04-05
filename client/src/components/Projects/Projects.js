@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import './Projects.sass';
 import './media_queries.sass';
 
@@ -18,7 +18,6 @@ import { easeQuadInOut } from "d3-ease";
 import AnimatedProgressProvider from "./AnimatedProgressProvider";
 
 // Import components & styles from React Bootstrap
-import { Modal, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import styled components from Material UI
@@ -81,19 +80,14 @@ const Projects = (props) => {
 
   const getProjects = async () => {
     props.dispatch({ type: REQUEST_SENT, payload: { requestStatus: 'request sent!' } });
-    console.log('request sent', store.getState().requestSentReducer);
     let res = await projectService.getAll();
     props.dispatch({ type: REQUEST_SUCCEEDED, payload: { requestStatus: 'request succeeded!' } });
-    console.log('request succeeded', store.getState().requestSentReducer);
     setProjects(res);
     props.dispatch({ type: REQUEST_RESET, payload: { requestStatus: '' } });
-    console.log('request reset', store.getState().requestSentReducer);
   }
 
   const postNewProject = async () => {
     let res = await projectService.postNew();
-    // console.log(res);
-    // console.log('store :', store.getState());
     getProjects();
   }
 
@@ -161,17 +155,13 @@ const Projects = (props) => {
 
     const getSelectedProject = async () => {
       const res = await projectService.getOne();
-      // console.log('selected project: ', res);
       props.dispatch({ type: GET_SELECTED_PROJECT, payload: { name: res[0].name, deadline: res[0].deadline, tasks_completed: res[0].tasks_completed, total_tasks: res[0].total_tasks } });
-      // console.log('redux store: ', store.getState());
       navToProjectPage();      
     }
 
     const handleOnClickPageButton = (e) => {
       e.preventDefault();
-      // console.log('project name from db: ', project.name);
       props.dispatch({ type: STORE_PROJECT_NAME, payload: { projectName: project.name } });
-      // console.log('redux store: ', store.getState());
       getSelectedProject();
     };
 
@@ -210,7 +200,6 @@ const Projects = (props) => {
             </div>
           )
         }
-        {/* console.log(projects) */}
       </div>
     );
   };
@@ -276,22 +265,7 @@ const Projects = (props) => {
   };
 
   // Component for search bar
-  const SearchBar = () => {
-    // const [input_value, setInputValue] = useState('');
-    // const firstUpdate = useRef(true);
-
-    // useEffect(() => {
-    //   if (firstUpdate.current) {
-    //     firstUpdate.current = false;
-    //     return;
-    //   }
-    //   console.log(input_value);
-    //   let filtered = projects.filter((project) => project.name.startsWith(input_value));
-    //   console.log('filtered:', filtered);
-    //   // Need to prevent SearchBar component from re-rendering when calling setProjects
-    //   // setProjects(filtered);
-    // });
-
+  const ProjectsBar = () => {
     const [sorted, setSorted] = useState('Recently Added');
 
     const handleSortedChange = (event) => {
@@ -331,17 +305,6 @@ const Projects = (props) => {
 
     return (
       <Card className={classes.card}>
-      {/**
-        <form className="SearchForm">
-          <input
-            type="text"
-            placeholder="Find a project by name..."
-            onChange={(e) => setInputValue((e.target.value).toUpperCase())}
-          />
-        </form>
-        <span>Sort By</span>      
-      */}
-
         <FormControl variant='outlined' className={classes.formControl}>
           <InputLabel id="sort-by-label">Sort By</InputLabel>
           <Select 
@@ -369,7 +332,7 @@ const Projects = (props) => {
 
   return (
     <div className="Projects">
-      <SearchBar />
+      <ProjectsBar />
       <AddProjectModal />
       <div>
         {
