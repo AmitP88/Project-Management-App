@@ -218,7 +218,7 @@ const Projects = (props) => {
   // Modal component for adding new projects
   const AddProjectModal = () => {
     const [name, setName] = useState('');
-    const [deadline, setDeadline] = useState(new Date('2014-08-18T21:11:54'));
+    const [deadline, setDeadline] = useState(new Date());
 
     const handleDeadlineChange = (date) => {
       setDeadline(date);
