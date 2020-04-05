@@ -7,6 +7,10 @@ const ProjectSchema = new mongoose.Schema({
     trim: false,
     uppercase: true
   },
+  created: {
+    type: Date,
+    default: Date.now
+  },
   deadline: {
     type: Date,
     required: true,

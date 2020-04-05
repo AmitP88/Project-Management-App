@@ -102,6 +102,7 @@ const Projects = (props) => {
   const ProjectCard = (project) => {
     let id = project._id;
     let name = project.name;
+    let created = project.created;
     let deadline = project.deadline;
     let tasks_completed = project.tasks_completed;
     let total_tasks = project.total_tasks;
@@ -179,6 +180,10 @@ const Projects = (props) => {
         <Card key={id} className="projectCard" onClick={handleOnClickPageButton}>
           <div className="left-half">
             <p className="name">{name}</p>
+            <p className="deadline-label">Created:</p>
+            <p className="deadline">
+              <Moment format="ddd MMMM D, YYYY">{created}</Moment>
+            </p>
             <p className="deadline-label">Deadline:</p>
             <p className="deadline">
               <Moment format="ddd MMMM D, YYYY">{deadline}</Moment>
