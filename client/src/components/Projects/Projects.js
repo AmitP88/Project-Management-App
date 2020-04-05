@@ -67,7 +67,10 @@ const Projects = (props) => {
   // Hook for getting projects
   let [projects, setProjects] = useState(null);
 
-  // Hooks for add project modal
+  // Hook for sorting projects
+  const [sorted, setSorted] = useState('Recently Added');
+
+  // Hook for add project modal with functions to change state
   const [showAddModal, setShowAddModal] = useState(false);
   const handleCloseAddModal = () => setShowAddModal(false);
   const handleShowAddModal = () => setShowAddModal(true);
@@ -265,8 +268,6 @@ const Projects = (props) => {
 
   // Component for search bar
   const ProjectsBar = () => {
-    const [sorted, setSorted] = useState('Recently Added');
-
     const handleSortedChange = (event) => {
       setSorted(event.target.value);
     }
