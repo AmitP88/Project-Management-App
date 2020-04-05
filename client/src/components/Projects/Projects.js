@@ -180,10 +180,12 @@ const Projects = (props) => {
         <Card key={id} className="projectCard" onClick={handleOnClickPageButton}>
           <div className="left-half">
             <p className="name">{name}</p>
-            <p className="deadline-label">Created:</p>
-            <p className="deadline">
-              <Moment format="ddd MMMM D, YYYY">{created}</Moment>
-            </p>
+            {/**
+              <p className="created-label">Created:</p>              
+              <p className="created">
+                <Moment format="ddd MMMM D, YYYY">{created}</Moment>
+              </p>            
+            */}
             <p className="deadline-label">Deadline:</p>
             <p className="deadline">
               <Moment format="ddd MMMM D, YYYY">{deadline}</Moment>
@@ -273,7 +275,7 @@ const Projects = (props) => {
                 format="MM/dd/yyyy"
                 margin="normal"
                 id="date-picker-inline"
-                label="Date picker inline"
+                label="Deadline"
                 value={deadline}
                 onChange={handleDeadlineChange}
                 required
