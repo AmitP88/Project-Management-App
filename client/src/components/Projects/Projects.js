@@ -45,7 +45,7 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 
-import Fade from '@material-ui/core/Fade';
+import Slide from '@material-ui/core/Slide';
 
 // Import moment component for formatting date from deadline
 import Moment from 'react-moment';
@@ -183,7 +183,7 @@ const Projects = (props) => {
       return <Redirect key={0} to='/projectpage' />
     } else {
       return (
-        <Fade key={id} in={checked} timeout={1000}>
+        <Slide key={id} in={checked} direction='right' timeout={500} mountOnEnter>
           <Card className="projectCard" onClick={handleOnClickPageButton}>
             <div className="left-half">
               <p className="name">{name}</p>
@@ -202,7 +202,7 @@ const Projects = (props) => {
               <Progress />          
             </div>
           </Card>        
-        </Fade>
+        </Slide>
 
       );
     }
