@@ -45,6 +45,8 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 
+import Fade from '@material-ui/core/Fade';
+
 // Import moment component for formatting date from deadline
 import Moment from 'react-moment';
 import 'moment-timezone';
@@ -79,6 +81,9 @@ const Projects = (props) => {
   const handleCloseAddModal = () => setShowAddModal(false);
   const handleShowAddModal = () => setShowAddModal(true);
 
+  // Hook for sliding animation for project Cards
+  const [checked, setChecked] = useState(false);
+
   useEffect(() => {
     if(!projects) {
       getProjects();
@@ -90,6 +95,7 @@ const Projects = (props) => {
     let res = await projectService.getAll();
     props.dispatch({ type: REQUEST_SUCCEEDED, payload: { requestStatus: 'request succeeded!' } });
     setProjects(res);
+    setChecked((prev) => !prev);
     props.dispatch({ type: REQUEST_RESET, payload: { requestStatus: '' } });
   }
 
@@ -177,24 +183,27 @@ const Projects = (props) => {
       return <Redirect key={0} to='/projectpage' />
     } else {
       return (
-        <Card key={id} className="projectCard" onClick={handleOnClickPageButton}>
-          <div className="left-half">
-            <p className="name">{name}</p>
-            {/**
-              <p className="created-label">Created:</p>              
-              <p className="created">
-                <Moment format="ddd MMMM D, YYYY">{created}</Moment>
-              </p>            
-            */}
-            <p className="deadline-label">Deadline:</p>
-            <p className="deadline">
-              <Moment format="ddd MMMM D, YYYY">{deadline}</Moment>
-            </p>
-          </div>
-          <div className="right-half">
-            <Progress />          
-          </div>
-        </Card>
+        <Fade key={id} in={checked} timeout={1000}>
+          <Card className="projectCard" onClick={handleOnClickPageButton}>
+            <div className="left-half">
+              <p className="name">{name}</p>
+              {/**
+                <p className="created-label">Created:</p>              
+                <p className="created">
+                  <Moment format="ddd MMMM D, YYYY">{created}</Moment>
+                </p>            
+              */}
+              <p className="deadline-label">Deadline:</p>
+              <p className="deadline">
+                <Moment format="ddd MMMM D, YYYY">{deadline}</Moment>
+              </p>
+            </div>
+            <div className="right-half">
+              <Progress />          
+            </div>
+          </Card>        
+        </Fade>
+
       );
     }
 
@@ -298,7 +307,7 @@ const Projects = (props) => {
   // Component for search bar
   const ProjectsBar = () => {
     useEffect(() => {
-      console.log('sorted:', sorted);      
+      console.log('sorted:', sorted);
     });
 
     const useStyles = makeStyles((theme) => ({
