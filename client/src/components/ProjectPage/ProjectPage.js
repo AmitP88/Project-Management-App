@@ -7,7 +7,7 @@ import './media_queries.sass';
 import store from '../../redux/store/store';
 import { connect } from 'react-redux';
 
-// Import moment component for formatting date from deadline
+// Import Moment component for formatting date from deadline
 import Moment from 'react-moment';
 import 'moment-timezone';
 
@@ -17,6 +17,10 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
+
+// Import components from CKEditor
+import CKEditor from '@ckeditor/ckeditor5-react';
+import InlineEditor from '@ckeditor/ckeditor5-build-inline';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,7 +47,30 @@ const ProjectPage = () => {
               <NavigateBeforeIcon />
               Back to Projects
             </Link>
-            <h1 className="project_name">{selected_project.name}</h1>
+            {/**
+              <h1 className="project_name">{selected_project.name}</h1>
+            */}
+            <CKEditor
+              editor={InlineEditor}
+              data={selected_project.name}
+              onInit={(editor) => {
+                // You can store the "editor" and use when it is needed.
+                console.log( 'Editor is ready to use!', editor );                
+              }}
+              onChange={(event, editor) => {
+                const data = editor.getData();
+                console.log({event, editor, data});
+              }}
+              onBlur={(event, editor) => {
+                console.log('Blur.', editor);
+              }}
+              onFocus={(event, editor) => {
+                console.log('Focus.', editor);
+              }}
+            />
+
+
+
             <div className="deadline">
               {'Deadline: '}
               <Moment format="ddd MMMM D, YYYY">{selected_project.deadline}</Moment>
