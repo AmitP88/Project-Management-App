@@ -53,6 +53,18 @@ const ProjectPage = () => {
             <CKEditor
               editor={InlineEditor}
               data={selected_project.name}
+              config={
+                {
+                  toolbar: ['heading', '|', 'bold', '|' ,'italic'],
+                  heading: {
+                    options: [
+                      { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+                      { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
+                      { model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' }
+                    ]
+                  }
+                }
+              }
               onInit={(editor) => {
                 // You can store the "editor" and use when it is needed.
                 console.log( 'Editor is ready to use!', editor );                
