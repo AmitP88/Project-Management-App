@@ -52,7 +52,7 @@ const ProjectPage = () => {
             */}
             <CKEditor
               editor={InlineEditor}
-              data={selected_project.name}
+              data={`<h1>${selected_project.name}</h1>`}
               config={
                 {
                   toolbar: ['heading', '|', 'bold', '|' ,'italic'],
