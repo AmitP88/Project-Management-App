@@ -18,6 +18,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
 
+import 'date-fns';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
+
 // Import components from CKEditor
 import CKEditor from '@ckeditor/ckeditor5-react';
 import InlineEditor from '@ckeditor/ckeditor5-build-inline';
@@ -52,7 +60,7 @@ const ProjectPage = () => {
             */}
             <CKEditor
               editor={InlineEditor}
-              data={`<h1 style={{textAlign: "center"}}>${selected_project.name}</h1>`}
+              data={`<h1>${selected_project.name}</h1>`}
               config={
                 {
                   toolbar: ['heading', '|', 'bold', '|' ,'italic'],
@@ -86,14 +94,35 @@ const ProjectPage = () => {
             <div className="deadline">
               {'Deadline: '}
               <Moment format="ddd MMMM D, YYYY">{selected_project.deadline}</Moment>
-            </div>          
+            </div>
+            
+            
+
+            
           </Card>
         </Grid>      
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={6} className="description">
           <Card className={classes.card}>
             <h6>Description Box</h6>
             <Paper elevation={0} variant='outlined'>
-              Content goes here
+              <CKEditor
+                editor={InlineEditor}
+                data={'<p>What is the project about?</p>'}
+                onInit={(editor) => {
+                  // You can store the "editor" and use when it is needed.
+                  console.log( 'Editor is ready to use!', editor );                
+                }}
+                onChange={(event, editor) => {
+                  const data = editor.getData();
+                  console.log({event, editor, data});
+                }}
+                onBlur={(event, editor) => {
+                  console.log('Blur.', editor);
+                }}
+                onFocus={(event, editor) => {
+                  console.log('Focus.', editor);
+                }}
+              />
             </Paper>
           </Card>
         </Grid>

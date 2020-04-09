@@ -271,6 +271,7 @@ const Projects = (props) => {
               margin='dense'
               id='name'
               label='Project Name'
+              inputProps={{maxLength: 20}}
               type='text'
               fullWidth
               value={name}
