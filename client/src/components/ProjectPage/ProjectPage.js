@@ -100,7 +100,7 @@ const ProjectPage = () => {
 
 
             <div className="deadline">
-              <p>{'Deadline: '}</p>
+              <p className="deadline-label">{'Deadline: '}</p>
               {/**
                 <Moment format="ddd MMMM D, YYYY">{selected_project.deadline}</Moment>              
               */}
