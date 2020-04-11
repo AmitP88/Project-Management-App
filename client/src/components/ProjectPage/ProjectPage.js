@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './ProjectPage.sass';
 import './media_queries.sass';
@@ -44,7 +44,15 @@ const useStyles = makeStyles((theme) => ({
 
 const ProjectPage = () => {
   let selected_project = store.getState().getSelectedProjectReducer;
+  console.log(selected_project);
   const classes = useStyles();
+
+  // Hook for storing selected date for deadline
+  const [selectedDate, setSelectedDate] = useState(new Date(selected_project.deadline));
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  }
 
   return (
     <div className="ProjectPage">
@@ -92,8 +100,22 @@ const ProjectPage = () => {
 
 
             <div className="deadline">
-              {'Deadline: '}
-              <Moment format="ddd MMMM D, YYYY">{selected_project.deadline}</Moment>
+              <p>{'Deadline: '}</p>
+              {/**
+                <Moment format="ddd MMMM D, YYYY">{selected_project.deadline}</Moment>              
+              */}
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <KeyboardDatePicker
+                  margin="normal"
+                  id="date-picker-dialog"
+                  format="MM/dd/yyyy"
+                  value={selectedDate}
+                  onChange={handleDateChange}
+                  KeyboardButtonProps={{
+                    'aria-label': 'change date',
+                  }}
+                />              
+              </MuiPickersUtilsProvider>
             </div>
             
             
