@@ -71,7 +71,7 @@ const ProjectPage = () => {
               data={`<h1>${selected_project.name}</h1>`}
               config={
                 {
-                  toolbar: ['heading', '|', 'bold', '|' ,'italic'],
+                  toolbar: ['heading', '|', 'bold', '|' ,'italic', 'undo', 'redo'],
                   heading: {
                     options: [
                       { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
