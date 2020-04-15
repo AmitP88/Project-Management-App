@@ -69,7 +69,13 @@ const ProjectPage = () => {
             </Link>
 
             <div className="heading">
-              <TextField id="project_name" defaultValue={selected_project.name} />            
+              <TextField
+                id="project_name"
+                defaultValue={selected_project.name}
+                inputProps={{
+                  maxLength: 10,
+                }}
+              />            
             </div>
 
 
