@@ -73,7 +73,7 @@ const ProjectPage = () => {
                 id="project_name"
                 defaultValue={selected_project.name}
                 inputProps={{
-                  maxLength: 10,
+                  maxLength: 20,
                 }}
               />            
             </div>
