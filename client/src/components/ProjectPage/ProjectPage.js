@@ -61,9 +61,16 @@ const ProjectPage = () => {
     setSavedDeadline(deadline);
   }
 
+  const handleNameChange = (e) => {
+    e.preventDefault();
+    setSavedName(e.target.value);
+  }
+
   useEffect(() => {
-    console.log('savedName: ', savedName);
-  });
+    if(savedName !== project_name){
+      console.log('savedName: ', savedName);        
+    }
+  }, [savedName]);
 
   return (
     <div className="ProjectPage">
@@ -82,8 +89,8 @@ const ProjectPage = () => {
                 inputProps={{
                   maxLength: 20,
                 }}
-                onChange={(e) => setSavedName(e.target.name)}
-              />            
+                onChange={handleNameChange}
+              />
             </div>
 
 
