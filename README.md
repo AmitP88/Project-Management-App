@@ -13,4 +13,4 @@ I'm currently working on the mobile view first, so to view the best preview of t
       
 - 3.) In the mobile emulator, click on the top bar labeled Mobile - S 320px to view the app on the small-sized mobile view. This is the 
 
-      best view of the app so far.
+     best view of the app so far.
