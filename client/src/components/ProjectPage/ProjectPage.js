@@ -66,7 +66,7 @@ const ProjectPage = () => {
     setSavedName(e.target.value);
   }
 
-  useEffect(() => {
+  useEffect((project_name) => {
     if(savedName !== project_name){
       console.log('savedName: ', savedName);        
     }
