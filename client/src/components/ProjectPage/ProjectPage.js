@@ -50,6 +50,7 @@ const ProjectPage = () => {
   const classes = useStyles();
 
   const selected_project = store.getState().getSelectedProjectReducer;
+  const project_id = selected_project._id;
   const project_name = selected_project.name;
   const project_deadline = selected_project.deadline;
 
@@ -67,6 +68,7 @@ const ProjectPage = () => {
   }
 
   useEffect((project_name) => {
+    console.log('project id: ', project_id);
     if(savedName !== project_name){
       console.log('savedName: ', savedName);        
     }

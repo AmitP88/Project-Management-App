@@ -13,6 +13,7 @@ export const initialState = {
   },
   projectName: '',
   selectedProject: {
+    _id: '',
     name: '',
     deadline: '',
     tasks_completed: 0,

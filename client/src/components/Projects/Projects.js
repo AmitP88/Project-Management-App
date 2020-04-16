@@ -169,7 +169,7 @@ const Projects = (props) => {
 
     const getSelectedProject = async () => {
       const res = await projectService.getOne();
-      props.dispatch({ type: GET_SELECTED_PROJECT, payload: { name: res[0].name, deadline: res[0].deadline, tasks_completed: res[0].tasks_completed, total_tasks: res[0].total_tasks } });
+      props.dispatch({ type: GET_SELECTED_PROJECT, payload: { _id: res[0]._id ,name: res[0].name, deadline: res[0].deadline, tasks_completed: res[0].tasks_completed, total_tasks: res[0].total_tasks } });
       navToProjectPage();      
     }
 
