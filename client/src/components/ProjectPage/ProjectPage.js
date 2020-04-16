@@ -47,15 +47,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ProjectPage = () => {
-  let selected_project = store.getState().getSelectedProjectReducer;
-  console.log(selected_project);
   const classes = useStyles();
 
-  // Hook for storing selected date for deadline
-  const [selectedDate, setSelectedDate] = useState(new Date(selected_project.deadline));
+  const selected_project = store.getState().getSelectedProjectReducer;
+  const project_name = selected_project.name;
+  const project_deadline = selected_project.deadline;
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
+  // Hook for storing project data
+  const [savedName, setSavedName] = useState(project_name);
+  const [inputName, setInputName] = useState('');
+  const [savedDeadline, setSavedDeadline] = useState(new Date(project_deadline));
+
+  const handleDeadlineChange = (deadline) => {
+    setSavedDeadline(deadline);
   }
 
   return (
@@ -71,7 +75,7 @@ const ProjectPage = () => {
             <div className="heading">
               <TextField
                 id="project_name"
-                defaultValue={selected_project.name}
+                defaultValue={savedName}
                 inputProps={{
                   maxLength: 20,
                 }}
@@ -90,8 +94,8 @@ const ProjectPage = () => {
                   margin="normal"
                   id="date-picker-dialog"
                   format="MM/dd/yyyy"
-                  value={selectedDate}
-                  onChange={handleDateChange}
+                  value={savedDeadline}
+                  onChange={handleDeadlineChange}
                   KeyboardButtonProps={{
                     'aria-label': 'change date',
                   }}
