@@ -1,11 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import './Projects.sass';
 import './media_queries.sass';
 
 // Import Font Awesome for React
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 
 // Import axios get request to get data from DB
 import projectService from '../../services/projectService';
@@ -34,14 +34,14 @@ import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
+// import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,
-  KeyboardTimePicker,
+  // KeyboardTimePicker,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 
@@ -52,7 +52,7 @@ import Moment from 'react-moment';
 import 'moment-timezone';
 
 // Import connect function from React-Redux
-import store from '../../redux/store/store';
+// import store from '../../redux/store/store';
 import { connect } from 'react-redux';
 
 import ADD_PROJECT_SUBMIT from '../../redux/actions/addProjectSubmit';
@@ -63,7 +63,7 @@ import REQUEST_SUCCEEDED from '../../redux/actions/requestSucceeded';
 import REQUEST_RESET from '../../redux/actions/requestReset';
 
 // import React Loader Spinner
-import Loader from 'react-loader-spinner';
+// import Loader from 'react-loader-spinner';
 
 const Projects = (props) => {
   // Hook for getting projects
@@ -100,7 +100,7 @@ const Projects = (props) => {
   }
 
   const postNewProject = async () => {
-    let res = await projectService.postNew();
+    // let res = await projectService.postNew();
     getProjects();
   }
 
@@ -108,7 +108,7 @@ const Projects = (props) => {
   const ProjectCard = (project) => {
     let id = project._id;
     let name = project.name;
-    let created = project.created;
+    // let created = project.created;
     let deadline = project.deadline;
     let tasks_completed = project.tasks_completed;
     let total_tasks = project.total_tasks;
@@ -216,7 +216,7 @@ const Projects = (props) => {
         switch(sorted) {
           case('Recently Added'):
             let recently_added = projects.reverse();
-            console.log(recently_added);
+            // console.log(recently_added);
             return recently_added.map(project => ProjectCard(project));
           case('Alphabetical'):
             let alphabetical = projects.sort((a, b) => {
@@ -224,8 +224,12 @@ const Projects = (props) => {
               let nameB = b.name;
               return nameA.localeCompare(nameB);
             });
-            console.log(alphabetical);
+            // console.log(alphabetical);
             return alphabetical.map(project => ProjectCard(project));
+          default:
+            recently_added = projects.reverse();
+            // console.log(recently_added);
+            return recently_added.map(project => ProjectCard(project));
         }        
       } else {
         return (
@@ -256,7 +260,7 @@ const Projects = (props) => {
     const handleSubmit = (e) => {
       e.preventDefault();
       props.dispatch({ type: ADD_PROJECT_SUBMIT, payload: { name, deadline } });
-      console.log(store.getState());
+      // console.log(store.getState());
       postNewProject();
       handleCloseAddModal();
     }
@@ -307,9 +311,9 @@ const Projects = (props) => {
 
   // Component for search bar
   const ProjectsBar = () => {
-    useEffect(() => {
-      console.log('sorted:', sorted);
-    });
+    // useEffect(() => {
+    //   console.log('sorted:', sorted);
+    // });
 
     const useStyles = makeStyles((theme) => ({
       formControl: {

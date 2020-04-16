@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './ProjectPage.sass';
 import './media_queries.sass';
@@ -8,8 +8,8 @@ import store from '../../redux/store/store';
 import { connect } from 'react-redux';
 
 // Import Moment component for formatting date from deadline
-import Moment from 'react-moment';
-import 'moment-timezone';
+// import Moment from 'react-moment';
+// import 'moment-timezone';
 
 // Import styled components from Material UI
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
@@ -23,7 +23,7 @@ import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,
-  KeyboardTimePicker,
+  // KeyboardTimePicker,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 
@@ -55,12 +55,15 @@ const ProjectPage = () => {
 
   // Hook for storing project data
   const [savedName, setSavedName] = useState(project_name);
-  const [inputName, setInputName] = useState('');
   const [savedDeadline, setSavedDeadline] = useState(new Date(project_deadline));
 
   const handleDeadlineChange = (deadline) => {
     setSavedDeadline(deadline);
   }
+
+  useEffect(() => {
+    console.log('savedName: ', savedName);
+  });
 
   return (
     <div className="ProjectPage">
@@ -79,6 +82,7 @@ const ProjectPage = () => {
                 inputProps={{
                   maxLength: 20,
                 }}
+                onChange={(e) => setSavedName(e.target.name)}
               />            
             </div>
 
