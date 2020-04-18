@@ -27,5 +27,14 @@ export default {
       }
     });
     return res.data || [];
+  },
+// UPDATE a selected project ("Update" method in CRUD)
+  updateOne: async () => {
+    let selected_project_id = store.getState().getSelectedProjectReducer._id;
+    let check = console.log('project id: ', selected_project_id);
+    return check;
+    // let res = await axios.patch(`/api/projects/:id`, {
+
+    // });
   }
 }

@@ -11,6 +11,9 @@ import { connect } from 'react-redux';
 // import Moment from 'react-moment';
 // import 'moment-timezone';
 
+// Import axios get request to get data from DB
+import projectService from '../../services/projectService';
+
 // Import styled components from Material UI
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import Grid from '@material-ui/core/Grid';
@@ -67,8 +70,13 @@ const ProjectPage = () => {
     setSavedName(e.target.value);
   }
 
+  const updateProject = async () => {
+    let res = await projectService.updateOne();
+    return res;
+  }
+
   useEffect((project_name) => {
-    console.log('project id: ', project_id);
+    updateProject();
     if(savedName !== project_name){
       console.log('savedName: ', savedName);        
     }
