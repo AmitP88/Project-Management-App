@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 import projectService from '../../services/projectService';
 
 // Import styled components from Material UI
-import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -87,13 +87,14 @@ const ProjectPage = () => {
   return (
     <div className="ProjectPage">
       <Grid container>
+        <div className="back_button">
+          <Link to='/projects'>
+            <ArrowBackIcon />
+            <span>Back to Projects</span>
+          </Link>            
+        </div>
         <Grid item xs={12} className="header">
           <Card className={classes.card}>
-            <Link to='/projects'>
-              <NavigateBeforeIcon />
-              Back to Projects
-            </Link>
-
             <div className="heading">
               <TextField
                 id="project_name"
