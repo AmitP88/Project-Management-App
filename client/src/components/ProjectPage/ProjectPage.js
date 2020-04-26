@@ -33,6 +33,7 @@ import {
 // Import components from CKEditor
 import CKEditor from '@ckeditor/ckeditor5-react';
 import InlineEditor from '@ckeditor/ckeditor5-build-inline';
+import { UPDATE_PROJECT_NAME } from '../../redux/actions/updateSelectedProject/updateProjectName';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -68,6 +69,7 @@ const ProjectPage = () => {
   const handleNameChange = (e) => {
     e.preventDefault();
     setSavedName(e.target.value);
+    // props.dispatch({ type: UPDATE_PROJECT_NAME, payload: { name: savedName } });
   }
 
   const updateProject = async () => {
