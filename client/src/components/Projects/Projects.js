@@ -58,9 +58,9 @@ import { connect } from 'react-redux';
 import ADD_PROJECT_SUBMIT from '../../redux/actions/addProjectSubmit';
 import STORE_PROJECT_NAME from '../../redux/actions/storeProjectName';
 import GET_SELECTED_PROJECT from '../../redux/actions/getSelectedProject';
-import REQUEST_SENT from '../../redux/actions/requestSent';
-import REQUEST_SUCCEEDED from '../../redux/actions/requestSucceeded';
-import REQUEST_RESET from '../../redux/actions/requestReset';
+import REQUEST_SENT from '../../redux/actions/requests/requestSent';
+import REQUEST_SUCCEEDED from '../../redux/actions/requests/requestSucceeded';
+import REQUEST_RESET from '../../redux/actions/requests/requestReset';
 
 // import React Loader Spinner
 // import Loader from 'react-loader-spinner';
