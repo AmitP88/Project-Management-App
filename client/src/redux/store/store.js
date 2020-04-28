@@ -3,7 +3,6 @@ import addProjectSubmitReducer from '../reducers/addProjectSubmitReducer';
 import storeProjectNameReducer from '../reducers/storeProjectNameReducer';
 import getSelectedProjectReducer from '../reducers/getSelectedProjectReducer';
 import requestSentReducer from '../reducers/requestSentReducer';
-import updateSelectedProjectReducer from '../reducers/updateSelectedProjectReducer';
 
 export const initialState = {
   addProjectForm: {
@@ -27,8 +26,7 @@ const rootReducer = combineReducers({
   addProjectSubmitReducer,
   storeProjectNameReducer,
   getSelectedProjectReducer,
-  requestSentReducer,
-  updateSelectedProjectReducer
+  requestSentReducer
 });
 
 const store = createStore(rootReducer);

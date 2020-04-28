@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ProjectPage = () => {
+const ProjectPage = (props) => {
   const classes = useStyles();
 
   const selected_project = store.getState().getSelectedProjectReducer;
@@ -69,7 +69,7 @@ const ProjectPage = () => {
   const handleNameChange = (e) => {
     e.preventDefault();
     setSavedName(e.target.value);
-    // props.dispatch({ type: UPDATE_PROJECT_NAME, payload: { name: savedName } });
+    props.dispatch({ type: UPDATE_PROJECT_NAME, payload: { name: savedName } });
   }
 
   const updateProject = async () => {
@@ -80,7 +80,8 @@ const ProjectPage = () => {
   useEffect((project_name) => {
     updateProject();
     if(savedName !== project_name){
-      console.log('savedName: ', savedName);        
+      console.log('savedName: ', savedName);
+      console.log('state: ', store.getState());     
     }
   }, [savedName]);
 
