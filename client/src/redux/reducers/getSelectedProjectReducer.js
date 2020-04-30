@@ -8,6 +8,7 @@ const getSelectedProjectReducer = (state = initialState, action) => {
       selectedProject: Object.assign({}, state.selectedProject, action.payload)
     });
   } else if (action.type === UPDATE_PROJECT_NAME) {
+    console.log('action payload: ', action.payload);
     return Object.assign({}, {
       selectedProject: Object.assign({}, state.selectedProject, action.payload)
     });
