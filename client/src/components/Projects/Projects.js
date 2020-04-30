@@ -52,7 +52,7 @@ import Moment from 'react-moment';
 import 'moment-timezone';
 
 // Import connect function from React-Redux
-// import store from '../../redux/store/store';
+import store from '../../redux/store/store';
 import { connect } from 'react-redux';
 
 import ADD_PROJECT_SUBMIT from '../../redux/actions/addProjectSubmit';
@@ -63,7 +63,7 @@ import REQUEST_SUCCEEDED from '../../redux/actions/requests/requestSucceeded';
 import REQUEST_RESET from '../../redux/actions/requests/requestReset';
 
 // import React Loader Spinner
-// import Loader from 'react-loader-spinner';
+import Loader from 'react-loader-spinner';
 
 const Projects = (props) => {
   // Hook for getting projects
@@ -100,7 +100,7 @@ const Projects = (props) => {
   }
 
   const postNewProject = async () => {
-    // let res = await projectService.postNew();
+    let res = await projectService.postNew();
     getProjects();
   }
 
@@ -378,8 +378,10 @@ const Projects = (props) => {
       <ProjectsBar />
       <AddProjectModal />
       <div>
-        <List />
-        {/**
+        {/*
+          <List />          
+        */}
+        {
           store.getState().requestSentReducer.requestStatus === 'request succeeded!' ?
           <List /> :
           <div
@@ -393,8 +395,7 @@ const Projects = (props) => {
             }}
           >
             <Loader type="ThreeDots" color="#3f51b5" height={50} width={100} />
-          </div>          
-          */
+          </div>
         }      
       </div>
     </div>
