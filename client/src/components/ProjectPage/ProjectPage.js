@@ -59,7 +59,7 @@ const ProjectPage = (props) => {
   const project_deadline = selected_project.deadline;
 
   // Hook for storing project data
-  const [savedName, setSavedName] = useState(project_name);
+  const [name, setName] = useState(project_name);
   const [savedDeadline, setSavedDeadline] = useState(new Date(project_deadline));
 
   const handleDeadlineChange = (deadline) => {
@@ -68,8 +68,8 @@ const ProjectPage = (props) => {
 
   const handleNameChange = (e) => {
     e.preventDefault();
-    setSavedName(e.target.value);
-    props.dispatch({ type: UPDATE_PROJECT_NAME, payload: { name: savedName } });
+    setName(e.target.value);
+    props.dispatch({ type: UPDATE_PROJECT_NAME, payload: { name: name } });
   }
 
   const updateProject = async () => {
@@ -79,11 +79,11 @@ const ProjectPage = (props) => {
 
   useEffect((project_name) => {
     updateProject();
-    if(savedName !== project_name){
-      console.log('savedName: ', savedName);
+    if(name !== project_name){
+      console.log('savedName: ', name);
       console.log('state: ', store.getState());     
     }
-  }, [savedName]);
+  }, [name]);
 
   return (
     <div className="ProjectPage">
@@ -99,7 +99,7 @@ const ProjectPage = (props) => {
             <div className="heading">
               <TextField
                 id="project_name"
-                defaultValue={savedName}
+                defaultValue={name}
                 inputProps={{
                   maxLength: 20,
                 }}
