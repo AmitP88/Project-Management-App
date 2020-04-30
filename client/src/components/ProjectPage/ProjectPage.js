@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 const ProjectPage = (props) => {
   const classes = useStyles();
 
-  const selected_project = store.getState().getSelectedProjectReducer;
+  const selected_project = store.getState().getSelectedProjectReducer.selectedProject;
   const project_id = selected_project._id;
   const project_name = selected_project.name;
   const project_deadline = selected_project.deadline;
