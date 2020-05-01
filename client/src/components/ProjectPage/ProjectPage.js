@@ -69,7 +69,6 @@ const ProjectPage = (props) => {
   const handleNameChange = async (e) => {
     e.preventDefault();
     setName(e.target.value);
-    props.dispatch({ type: UPDATE_PROJECT_NAME, payload: { name: name } });
   }
 
   const updateProject = async () => {
@@ -80,6 +79,7 @@ const ProjectPage = (props) => {
   useEffect((project_name) => {
     updateProject();
     if(name !== project_name){
+      props.dispatch({ type: UPDATE_PROJECT_NAME, payload: { name: name } });
       console.log('name: ', name);
       console.log('state: ', store.getState());     
     }
