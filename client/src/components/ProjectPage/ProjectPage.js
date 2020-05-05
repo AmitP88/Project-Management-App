@@ -77,12 +77,12 @@ const ProjectPage = (props) => {
   }
 
   useEffect((project_name) => {
-    updateProject();
     if(name !== project_name){
       props.dispatch({ type: UPDATE_PROJECT_NAME, payload: { name: name } });
       console.log('name: ', name);
       console.log('state: ', store.getState());     
     }
+    updateProject();    
   }, [name]);
 
   return (
