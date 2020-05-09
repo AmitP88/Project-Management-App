@@ -26,7 +26,7 @@ app.get("/api/projects", async (req, res) => {
 
 // UPDATE an existing project on the projects collection using _id property (UPDATE op in CRUD)
 app.patch("/api/projects/:id", async (req, res) => {
-  console.log("sent name: ", req.body.params.name);
+  // console.log("sent name: ", req.body.params.name);
 
   ProjectModel.findByIdAndUpdate(
     req.params.id,

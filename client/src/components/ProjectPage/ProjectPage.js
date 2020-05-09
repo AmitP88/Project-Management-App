@@ -54,7 +54,7 @@ const ProjectPage = (props) => {
   const classes = useStyles();
 
   const selected_project = store.getState().getSelectedProjectReducer.selectedProject;
-  const project_id = selected_project._id;
+  // const project_id = selected_project._id;
   const project_name = selected_project.name;
   const project_deadline = selected_project.deadline;
 
@@ -79,8 +79,8 @@ const ProjectPage = (props) => {
   useEffect((project_name) => {
     if(name !== project_name){
       props.dispatch({ type: UPDATE_PROJECT_NAME, payload: { name: name } });
-      console.log('name: ', name);
-      console.log('state: ', store.getState());     
+      // console.log('name: ', name);
+      // console.log('state: ', store.getState());     
     }
     updateProject();    
   }, [name]);

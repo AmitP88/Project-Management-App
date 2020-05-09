@@ -41,8 +41,8 @@ export default {
     })
     .then(function (response) {
       // handle success
-      console.log(response);
-      console.log(selected_project_name);
+      // console.log(response);
+      // console.log(selected_project_name);
     })
     .catch(function (error) {
       // handle error
