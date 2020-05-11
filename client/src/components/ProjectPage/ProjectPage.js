@@ -62,14 +62,14 @@ const ProjectPage = (props) => {
   const [name, setName] = useState(project_name);
   const [savedDeadline, setSavedDeadline] = useState(new Date(project_deadline));
 
-  const handleDeadlineChange = (deadline) => {
-    setSavedDeadline(deadline);
-  }
-
   const handleNameChange = async (e) => {
     e.preventDefault();
     setName(e.target.value);
   }
+
+  const handleDeadlineChange = (deadline) => {
+    setSavedDeadline(deadline);
+  }  
 
   const updateProject = async () => {
     let res = await projectService.updateOne();
