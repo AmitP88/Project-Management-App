@@ -57,33 +57,41 @@ const ProjectPage = (props) => {
   // const project_id = selected_project._id;
   const project_name = selected_project.name;
   const project_deadline = selected_project.deadline;
+  const formatted_project_deadline = new Date(project_deadline);
 
   // Hook for storing project data
   const [name, setName] = useState(project_name);
-  const [savedDeadline, setSavedDeadline] = useState(new Date(project_deadline));
+  const [deadline, setDeadline] = useState(formatted_project_deadline);
 
   const handleNameChange = async (e) => {
-    e.preventDefault();
     setName(e.target.value);
   }
 
-  const handleDeadlineChange = (deadline) => {
-    setSavedDeadline(deadline);
-  }  
+  const handleDeadlineChange = async (e) => {
+    console.log('e: ', e);
+    console.log('e.target: ', e.currentTarget);
+    setDeadline(e);
+    console.log('deadline: ', deadline);
+  }
 
   const updateProject = async () => {
     let res = await projectService.updateOne();
     return res;
   }
 
-  useEffect((project_name) => {
+  useEffect((project_name, project_deadline) => {
     if(name !== project_name){
       props.dispatch({ type: UPDATE_PROJECT_NAME, payload: { name: name } });
       // console.log('name: ', name);
       // console.log('state: ', store.getState());     
     }
-    updateProject();    
-  }, [name]);
+    if(deadline === project_deadline){
+      console.log('database deadline: ', deadline);
+    } else {
+      console.log('new deadline: ', deadline);
+    }
+    updateProject();
+  }, [name || deadline]);
 
   return (
     <div className="ProjectPage">
@@ -119,7 +127,7 @@ const ProjectPage = (props) => {
                   margin="normal"
                   id="date-picker-dialog"
                   format="MM/dd/yyyy"
-                  value={savedDeadline}
+                  value={deadline}
                   onChange={handleDeadlineChange}
                   KeyboardButtonProps={{
                     'aria-label': 'change date',
