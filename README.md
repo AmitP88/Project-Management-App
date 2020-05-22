@@ -14,11 +14,11 @@ I'm currently working on the mobile view first, so to view the best preview of t
 
 #### What the App Looks Like in Mobile View (tablet/desktop views will be available later on)
 
-##### Projects List
+### Projects List
 ![Projects List](/screenshots/projects_list.png)
 
-##### Project Page
+### Project Page
 ![Project Page](/screenshots/project_page.png)
 
-##### Add Project Modal
+### Add Project Modal
 ![Add Project Modal](/screenshots/add_project.png)
